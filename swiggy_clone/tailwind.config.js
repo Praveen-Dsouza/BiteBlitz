@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       default: ["ProximaNova", "arial", "Helvetica Neue", "sans-serif"],  
+      cuisine: ["Basis Grotesque Pro", "Arial", "sans-serif"]
     },
     extend: {},
   },
