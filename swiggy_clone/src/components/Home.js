@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import { RESTAURANT_LIST_URL } from "../utils/constants";
 
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -9,9 +10,7 @@ const Home = () => {
   }, []);
 
   const fetchRestaurantList = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RESTAURANT_LIST_URL);
     const json = await data.json();
     const restaurantList = json?.data?.cards[2]?.data?.data?.cards;
     setRestaurantList(restaurantList);

@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Support from "./components/Support";
@@ -36,7 +35,6 @@ function App() {
   return (
     <div className="">
       <React.StrictMode>
-        {/* <Navbar/> */}
         <RouterProvider router={appRouter} />
       </React.StrictMode>
     </div>

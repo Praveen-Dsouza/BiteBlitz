@@ -1,3 +1,5 @@
+import { CDN_URL, RATING_URL } from "../utils/constants";
+
 const ResturantCard = (props) => {
   const { resData } = props;
   const {
@@ -12,13 +14,10 @@ const ResturantCard = (props) => {
   return (
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
       <img
-      // w-full h-full
+        // w-full h-full
         className="rounded-xl h-auto w-full mb-3 overflow-hidden shadow-xs md:shadow-sm lg:shadow-md xl:shadow-lg 2xl:shadow-xl"
         alt={name + " _image"}
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
+        src={CDN_URL + cloudinaryImageId}
       />
       <div className="ml-3">
         <h3 className="font-bold font-cuisine text-lg text-[#02060cbf]">
@@ -27,7 +26,7 @@ const ResturantCard = (props) => {
         <h4 className="flex text-center">
           <img
             className="w-7 h-8"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr51LTOl1FrHsHH-dynl-B7kaj-l4wkl_LEA&usqp=CAU"
+            src={RATING_URL}
             alt="rating_img"
           />
           <span className="text-base font-semibold font-cuisine text-[#02060cbf] my-1">
