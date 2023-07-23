@@ -20,7 +20,7 @@ const ResturantCard = (props) => {
         }
       />
       <div className="p-2">
-        <h3 className="font-bold font-cuisine text-lg text-[#02060cbf]">{name.length > 20 ? name.slice(0, 19) + "...": name}</h3>
+        <h3 className="font-bold font-cuisine text-lg text-[#02060cbf]">{name.length > 20 ? name.slice(0, 18) + "...": name}</h3>
         <h4 className="flex text-center">
           <img
             className="w-7 h-8"
