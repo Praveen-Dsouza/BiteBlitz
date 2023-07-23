@@ -28,8 +28,12 @@ const appRouter = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
       },
+      {
+        path: "*",
+        element: <PageNotFound/>
+      }
     ],
-    errorElement: <PageNotFound/>
+    // errorElement: <PageNotFound/>
   }
 ]);
 
