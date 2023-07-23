@@ -10,10 +10,10 @@ const ResturantCard = (props) => {
   } = resData?.data;
 
   return (
-    <div className="p-4 m-2 w-[250px] cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
+    <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
       <img
       // w-full h-full
-        className="rounded-xl mb-3 overflow-hidden relative shadow-xs md:shadow-sm lg:shadow-md xl:shadow-lg 2xl:shadow-xl"
+        className="rounded-xl h-auto w-full mb-3 overflow-hidden shadow-xs md:shadow-sm lg:shadow-md xl:shadow-lg 2xl:shadow-xl"
         alt={name + " _image"}
         src={
           "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
@@ -34,7 +34,6 @@ const ResturantCard = (props) => {
             {avgRating}
           </span>
         </h4>
-        <p>{cuisines.length}</p>
         <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
           {cuisines.join("").length > 20
             ? cuisines.slice(0, 2).join(", ") + "..."
