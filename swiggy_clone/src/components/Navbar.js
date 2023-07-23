@@ -64,7 +64,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div>
+      <div className="mx-[calc(10%+36px)]">
         <Outlet />
       </div>
     </>
