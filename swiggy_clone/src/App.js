@@ -10,19 +10,25 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>
-  },
-  {
-    path: "/offers-near-me",
-    element: <Offers/>
-  },
-  {
-    path: "/support",
-    element: <Support/>
-  },
-  {
-    path: "/checkout",
-    element: <Checkout/>
+    element: <Navbar/>,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "offers-near-me",
+        element: <Offers />,
+      },
+      {
+        path: "support",
+        element: <Support />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
+      },
+    ]
   }
 ]);
 
@@ -30,7 +36,7 @@ function App() {
   return (
     <div className="">
       <React.StrictMode>
-        <Navbar/>
+        {/* <Navbar/> */}
         <RouterProvider router={appRouter} />
       </React.StrictMode>
     </div>
