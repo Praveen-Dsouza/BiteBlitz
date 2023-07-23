@@ -10,7 +10,7 @@ const ResturantCard = (props) => {
   } = resData?.data;
 
   return (
-    <div className="p-4 m-2 w-[250px] cursor-pointer border-white hover:bg-white-500 hover:scale-110 transform transition duration-500 font-default">
+    <div className="p-4 m-2 w-[250px] cursor-pointer border-white hover:bg-white-500 hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
       <img
         className="rounded-xl"
         alt={name + " _image"}

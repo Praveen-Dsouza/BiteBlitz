@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className="col-6/12">
           <Link to="/">
             <img
-              className="w-[34px] h-[49px] m-4 cursor-pointer"
+              className="w-[34px] h-[49px] m-4 cursor-pointer hover:scale-110 transform transition duration-500 hover:subpixel-antialiased "
               src="https://seeklogo.com/images/S/swiggy-logo-8EF8260FA4-seeklogo.com.png"
               alt="logo"
             />
