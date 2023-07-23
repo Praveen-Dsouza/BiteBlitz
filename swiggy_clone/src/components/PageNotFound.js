@@ -2,7 +2,7 @@ import { PAGE_NOT_FOUND_URL } from "../utils/constants";
 
 const PageNotFound = () => {
   return (
-    <div className="text-cuisine flex items-center justify-center leading-5 min-h-[calc(100vh-229px)]">
+    <div className="font-default flex items-center justify-center leading-5 min-h-[calc(100vh-229px)]">
       <div className="text-center w-[430px] py-[120px]">
         <div className="bg-contain bg-no-repeat bg-[50%]">
           <img className="h-[260px] inline-block" src={PAGE_NOT_FOUND_URL} alt="pagenotfound_img" />
