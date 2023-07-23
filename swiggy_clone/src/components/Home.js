@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="my-8 mx-4">
       <div className="grid flex-wrap p-0 item-center grid-cols-4 gap-8">
-        {restaurantList.map((restaurant) => (
+        {restaurantList?.map((restaurant) => (
           <RestaurantCard key={restaurant.data.id} resData={restaurant} />
         ))}
       </div>

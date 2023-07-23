@@ -5,6 +5,7 @@ import Support from "./components/Support";
 import Offers from "./components/Offers";
 import Checkout from "./components/Checkout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import PageNotFound from "./components/PageNotFound";
 
 const appRouter = createBrowserRouter([
   {
@@ -27,7 +28,8 @@ const appRouter = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
       },
-    ]
+    ],
+    errorElement: <PageNotFound/>
   }
 ]);
 
