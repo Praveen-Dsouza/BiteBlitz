@@ -7,8 +7,19 @@ import {
   SIGNIN_URL,
   SUPPORT_URL,
 } from "../utils/constants";
+import { useContext, useState } from "react";
+import SearchContext from "../utils/SearchContext";
 
 const Navbar = () => {
+  const { searchRestaurant } = useContext(SearchContext)
+  const [inputText, setInputText] = useState(searchRestaurant);
+  let inputHandler = (e) => {
+      var lowerCase = e?.target?.value?.toLowerCase();
+      console.log('navbar', lowerCase)
+      setInputText(lowerCase);
+    
+  };
+
   return (
     <>
       <div className="flex justify-between font-default shadow-md px-5 h-20 font-medium text-[#3d4152] text-base">
@@ -30,6 +41,7 @@ const Navbar = () => {
                 alt="search-icon"
               />
               <span className="my-1">Search</span>
+              <input type="search" className="flex px-4 text-[#282c3f] font-medium bg-white border border-[#282c3f33] rounded-[3px] focus:outline-none caret-[#282c3f33]-200" placeholder="Search for restaurants" value={inputText} onChange={inputHandler}/>
             </li>
             <li className="flex mr-[60px] cursor-pointer">
               <Link className="flex" to="/offers-near-me">
@@ -72,9 +84,11 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="mx-[calc(10%+36px)]">
-        <Outlet />
-      </div>
+      <SearchContext.Provider value={{ searchRestaurant: inputText, setInputText }}>
+        <div className="mx-[calc(10%+36px)]">
+          <Outlet />
+        </div>
+      </SearchContext.Provider>
     </>
   );
 };
