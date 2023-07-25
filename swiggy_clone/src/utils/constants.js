@@ -17,3 +17,5 @@ export const CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,
 export const RATING_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr51LTOl1FrHsHH-dynl-B7kaj-l4wkl_LEA&usqp=CAU"; 
 
 export const PAGE_NOT_FOUND_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/empty_404_3x_rgdw87"
+
+export const ERROR_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/connection_error_bsppck";

@@ -6,11 +6,12 @@ import Offers from "./components/Offers";
 import Checkout from "./components/Checkout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
+import Error from "./components/Error";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Navbar/>,
+    element: <Navbar />,
     children: [
       {
         path: "",
@@ -31,10 +32,13 @@ const appRouter = createBrowserRouter([
       {
         path: "*",
         element: <PageNotFound/>
-      }
+      },
+      {
+        path: "*",
+        errorElement: <Error />,
+      },
     ],
-    // errorElement: <PageNotFound/>
-  }
+  },
 ]);
 
 function App() {
