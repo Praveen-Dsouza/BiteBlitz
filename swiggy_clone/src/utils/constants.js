@@ -2,6 +2,8 @@ export const LOGO_URL = "https://seeklogo.com/images/S/swiggy-logo-8EF8260FA4-se
 
 export const SEARCH_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAArGac15ndUS6eFN3Awb6LW5-PxltsBgTyw&usqp=CAU";
 
+export const CLEAR_URL = "https://cdn.iconscout.com/icon/free/png-256/free-clear-1781787-1518214.png?f=webp";
+
 export const OFFERS_URL = "https://static.thenounproject.com/png/958296-200.png";
 
 export const SUPPORT_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRN8wjxRqe_d3qNo8sI5TVR97qba1eM3bSR-l14LS2TznUGTz30XNNI09it4luodnsrL4&usqp=CAU";
