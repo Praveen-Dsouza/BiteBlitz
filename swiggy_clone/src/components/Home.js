@@ -17,7 +17,6 @@ const Home = () => {
     const data = await fetch(RESTAURANT_LIST_URL);
     const json = await data.json();
     const restaurantList = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    console.log(json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants)
     setRestaurantList(restaurantList);
   };
 
@@ -31,9 +30,9 @@ const Home = () => {
             if (searchRestaurant === "") {
               return res;
             } 
-            // else {
-            //   return res?.info?.name.toLowerCase().includes(searchRestaurant);
-            // }
+            else {
+              return res?.info?.name.toLowerCase().includes(searchRestaurant);
+            }
           })
           ?.map((restaurant) => (
             <Link
