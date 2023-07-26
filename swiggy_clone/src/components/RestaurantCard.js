@@ -7,9 +7,9 @@ const ResturantCard = (props) => {
     cuisines,
     avgRating,
     costForTwo,
-    deliveryTime,
+    sla,
     cloudinaryImageId,
-  } = resData?.data;
+  } = resData?.info;
 
   return (
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
@@ -39,10 +39,10 @@ const ResturantCard = (props) => {
             : cuisines.join(", ")}
         </h4>
         <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
-          ₹{costForTwo / 100}
+          {costForTwo}
         </h4>
         <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
-          {deliveryTime} minutes
+          {sla?.deliveryTime} minutes
         </h4>
       </div>
     </div>

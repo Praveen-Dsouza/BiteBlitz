@@ -16,11 +16,12 @@ const Home = () => {
   const fetchRestaurantList = async () => {
     const data = await fetch(RESTAURANT_LIST_URL);
     const json = await data.json();
-    const restaurantList = json?.data?.cards[2]?.data?.data?.cards;
+    const restaurantList = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    console.log(json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants)
     setRestaurantList(restaurantList);
   };
 
-  return restaurantList?.length === 0 ? (
+  return restaurantList.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="my-8 mx-4">
@@ -29,16 +30,17 @@ const Home = () => {
           ?.filter((res) => {
             if (searchRestaurant === "") {
               return res;
-            } else {
-              return res?.data?.name?.toLowerCase().includes(searchRestaurant);
-            }
+            } 
+            // else {
+            //   return res?.info?.name.toLowerCase().includes(searchRestaurant);
+            // }
           })
           ?.map((restaurant) => (
             <Link
-              key={restaurant.data.id}
-              to={"/restaurants/" + restaurant.data.id}
+              key={restaurant?.info?.id}
+              to={"/restaurants/" + restaurant?.info?.id}
             >
-              {<RestaurantCard key={restaurant.data.id} resData={restaurant} />}
+              {<RestaurantCard key={restaurant?.info?.id} resData={restaurant} />}
             </Link>
           ))}
       </div>
