@@ -37,7 +37,7 @@ const Home = () => {
           ?.map((restaurant) => (
             <Link
               key={restaurant?.info?.id}
-              to={"/restaurants/" + restaurant?.info?.id}
+              to={`/restaurants/${restaurant?.info?.id}`}
             >
               {<RestaurantCard key={restaurant?.info?.id} resData={restaurant} />}
             </Link>
