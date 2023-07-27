@@ -1,5 +1,5 @@
-import { PAGE_NOT_FOUND_URL } from "../utils/constants";
 import ErrorPages from "./common/ErrorPages";
+import page_not_found from "../utils/images/page_not_found.png"
 
 const PageNotFound = () => {
   const errText = "Page not found";
@@ -8,7 +8,7 @@ const PageNotFound = () => {
 
   return (
     <ErrorPages
-      imagesUrl={PAGE_NOT_FOUND_URL}
+      imagesUrl={page_not_found}
       errText={errText}
       errDescription={errDescription}
       btnText={"GO HOME"}
