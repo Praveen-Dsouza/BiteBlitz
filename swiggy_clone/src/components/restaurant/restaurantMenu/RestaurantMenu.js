@@ -1,10 +1,13 @@
 import Shimmer from "../../Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
+import { useContext } from "react";
+import SearchContext from "../../../utils/SearchContext";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const { searchRestaurant } = useContext(SearchContext)
 
   if (resInfo === null) return <Shimmer />;
 
@@ -23,7 +26,15 @@ const RestaurantMenu = () => {
       <h2 className="font-bold">Menu</h2>
       <ul>
 
-        {itemCards?.map((item) => (
+        {itemCards
+        ?.filter((res) => {
+          if (searchRestaurant === "") {
+            return res;
+          } else {
+            return res?.card?.info?.name.toLowerCase().includes(searchRestaurant);
+          }
+        })
+        ?.map((item) => (
           <li key={item?.card?.info?.id}>
             {item?.card?.info?.name} - {" Rs."}
             {item?.card?.info?.price / 100 ||
