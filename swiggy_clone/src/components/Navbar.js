@@ -10,10 +10,14 @@ import {
 } from "../utils/constants";
 import { useContext, useState } from "react";
 import SearchContext from "../utils/SearchContext";
+import useOnlineStatus from "../utils/hooks/useOnlineStatus";
+import Error from "./Error";
 
 const Navbar = () => {
   const { searchRestaurant } = useContext(SearchContext)
   const [inputText, setInputText] = useState(searchRestaurant);
+  const onlineStatus = useOnlineStatus();
+
   let inputHandler = (e) => {
       var lowerCase = e?.target?.value?.toLowerCase();
       console.log('navbar', lowerCase)
@@ -89,7 +93,7 @@ const Navbar = () => {
       </div>
       <SearchContext.Provider value={{ searchRestaurant: inputText, setInputText }}>
         <div className="mx-[calc(10%+36px)]">
-          <Outlet />
+          {onlineStatus === false? <Error/> : <Outlet />}
         </div>
       </SearchContext.Provider>
     </>
