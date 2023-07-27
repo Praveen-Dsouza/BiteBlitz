@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./components/restaurant/restaurantList/Home";
 import Support from "./components/Support";
 import Offers from "./components/Offers";
 import Checkout from "./components/Checkout";
 import PageNotFound from "./components/PageNotFound";
-import RestaurantMenu from "./components/restaurant/RestaurantMenu";
+import RestaurantMenu from "./components/restaurant/restaurantMenu/RestaurantMenu";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Glitch from "./components/Glitch";
 

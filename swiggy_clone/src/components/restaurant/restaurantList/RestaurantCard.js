@@ -1,15 +1,9 @@
-import { CDN_URL, RATING_URL } from "../utils/constants";
+import { CDN_URL, RATING_URL } from "../../../utils/constants";
 
 const ResturantCard = (props) => {
   const { resData } = props;
-  const {
-    name,
-    cuisines,
-    avgRating,
-    costForTwo,
-    sla,
-    cloudinaryImageId,
-  } = resData?.info;
+  const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } =
+    resData?.info;
 
   return (
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
@@ -24,11 +18,7 @@ const ResturantCard = (props) => {
           {name.length > 20 ? name.slice(0, 18) + "..." : name}
         </h3>
         <h4 className="flex text-center">
-          <img
-            className="w-7 h-8"
-            src={RATING_URL}
-            alt="rating_img"
-          />
+          <img className="w-7 h-8" src={RATING_URL} alt="rating_img" />
           <span className="text-base font-semibold font-cuisine text-[#02060cbf] my-1">
             {avgRating}
           </span>
