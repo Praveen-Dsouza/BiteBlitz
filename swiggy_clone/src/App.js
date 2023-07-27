@@ -5,9 +5,9 @@ import Support from "./components/Support";
 import Offers from "./components/Offers";
 import Checkout from "./components/Checkout";
 import PageNotFound from "./components/PageNotFound";
-import Error from "./components/Error";
 import RestaurantMenu from "./components/restaurant/RestaurantMenu";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Glitch from "./components/Glitch";
 
 const appRouter = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "restaurants/:resId",
-        element: <RestaurantMenu/>
+        element: <RestaurantMenu />,
       },
       {
         path: "offers-near-me",
@@ -36,11 +36,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "*",
-        element: <PageNotFound/>
+        element: <PageNotFound />,
       },
       {
         path: "*",
-        errorElement: <Error />,
+        errorElement: <Glitch />,
       },
     ],
   },

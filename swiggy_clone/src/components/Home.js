@@ -4,10 +4,15 @@ import Shimmer from "./Shimmer";
 import SearchContext from "../utils/SearchContext";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/hooks/useRestaurantList";
+import useOnlineStatus from "../utils/hooks/useOnlineStatus";
+import Error from "./Error";
 
 const Home = () => {
   const { searchRestaurant } = useContext(SearchContext);
   const restaurantList = useRestaurantList();
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) return <Error/>
 
   return restaurantList?.length === 0 ? (
     <Shimmer />

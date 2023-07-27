@@ -1,5 +1,5 @@
-import { GLITCH_URL } from "../utils/constants";
 import ErrorPages from "./common/ErrorPages";
+import glitch from "../utils/images/glitch.png"
 
 const Glitch = () => {
   const errText = "We'll be back shortly";
@@ -7,7 +7,7 @@ const Glitch = () => {
     "We are fixing a temporary glitch. Sorry for the inconvenience.";
   return (
     <ErrorPages
-      imagesUrl={GLITCH_URL}
+      imagesUrl={glitch}
       errText={errText}
       errDescription={errDescription}
       btnText={"GO BACK"}
