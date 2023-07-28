@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex justify-between font-default shadow-md px-5 h-20 font-medium text-[#3d4152] text-base">
+      <div className="flex justify-between bg-[#fff] font-default shadow-md px-5 h-20 font-medium text-[#3d4152] text-base">
         <div className="col-6/12">
           <Link to="/">
             <img
@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
       </div>
       <SearchContext.Provider value={{ searchRestaurant: inputText, setInputText }}>
-        <div className="mx-[calc(10%+36px)]">
+        <div className="mx-[calc(10%+36px)] bg-[##ffffff00]">
           {onlineStatus === false? <Error/> : <Outlet />}
         </div>
       </SearchContext.Provider>

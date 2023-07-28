@@ -14,14 +14,14 @@ const RestaurantCard = (props) => {
 
   return (
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full leading-5 -tracking-[0.5em] text-[14px] antialiased drop-shadow-md">
         <img
           className="rounded-xl h-auto w-full tap-transparent object-cover mb-3 overflow-hidden shadow-xs md:shadow-sm lg:shadow-md xl:shadow-lg 2xl:shadow-xl"
           alt={name + " _image"}
           src={CDN_URL + cloudinaryImageId}
         />
         <div className="absolute grid px-3 pb-2 text-left bg-transparent bottom-1">
-          <div className="font-discount antialiased font-extrabold tracking-tighter w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase text-white">
+          <div className="font-discount antialiased font-extrabold tracking-tighter w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase text-[#ffffffeb]">
             {aggregatedDiscountInfoV3?.header} {aggregatedDiscountInfoV3?.subHeader}
           </div>
         </div>
