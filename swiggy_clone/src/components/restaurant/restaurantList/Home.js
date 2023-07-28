@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscountLabel } from "./RestaurantCard";
 import Shimmer from "../../Shimmer";
 import SearchContext from "../../../utils/SearchContext";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import useRestaurantList from "../../../utils/hooks/useRestaurantList";
 const Home = () => {
   const { searchRestaurant } = useContext(SearchContext);
   const restaurantList = useRestaurantList();
+  const RestaurantCardDicounted = withDiscountLabel(RestaurantCard);
 
   return restaurantList?.length === 0 ? (
     <Shimmer />
@@ -27,12 +28,15 @@ const Home = () => {
               key={restaurant?.info?.id}
               to={`/restaurants/${restaurant?.info?.id}`}
             >
-              {
-                <RestaurantCard
-                  key={restaurant?.info?.id}
-                  resData={restaurant}
+              {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+                <RestaurantCardDicounted
+                  resData={restaurant?.info}
                 />
-              }
+              ) : (
+                <RestaurantCard
+                  resData={restaurant?.info}
+                />
+              )}
             </Link>
           ))}
       </div>

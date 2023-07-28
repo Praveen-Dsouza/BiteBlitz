@@ -1,10 +1,10 @@
 import { CDN_URL, RATING_URL } from "../../../utils/constants";
 
-const ResturantCard = (props) => {
+const RestaurantCard = (props) => {
   const { resData } = props;
   console.log(resData)
-  const { name, cuisines, avgRating, areaName, sla, cloudinaryImageId } =
-    resData?.info;
+  const { name, cuisines, avgRating, areaName, cloudinaryImageId } =
+    resData;
 
   return (
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
@@ -37,4 +37,18 @@ const ResturantCard = (props) => {
   );
 };
 
-export default ResturantCard;
+// Higher Order Component
+export const withDiscountLabel = (RestaurantCard) => {
+
+  return (props) => {
+    const { header, subHeader } = props?.resData?.aggregatedDiscountInfoV3;
+    return (
+      <div className="">
+        <label className="font-discount antialiased font-extrabold w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase bg-black text-white">{header} {subHeader}</label>
+        <RestaurantCard {...props}/>
+      </div>
+    );
+  };
+};
+
+export default RestaurantCard;
