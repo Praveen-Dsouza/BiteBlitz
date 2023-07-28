@@ -29,9 +29,6 @@ const ResturantCard = (props) => {
             ? cuisines.slice(0, 2).join(", ") + "..."
             : cuisines.join(", ")}
         </h4>
-        {/* <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
-          {costForTwo}
-        </h4> */}
         <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
           {areaName}
         </h4>
