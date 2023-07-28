@@ -28,7 +28,7 @@ const Home = () => {
               key={restaurant?.info?.id}
               to={`/restaurants/${restaurant?.info?.id}`}
             >
-              {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+              {restaurant?.info?.promoted ? (
                 <RestaurantCardDicounted
                   resData={restaurant?.info}
                 />

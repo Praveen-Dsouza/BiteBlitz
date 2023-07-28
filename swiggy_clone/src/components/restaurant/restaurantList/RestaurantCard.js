@@ -2,18 +2,30 @@ import { CDN_URL, RATING_URL } from "../../../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  console.log(resData)
-  const { name, cuisines, avgRating, areaName, cloudinaryImageId } =
-    resData;
+  console.log(resData);
+  const {
+    name,
+    cuisines,
+    avgRating,
+    areaName,
+    cloudinaryImageId,
+    aggregatedDiscountInfoV3,
+  } = resData;
 
   return (
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
-      <img
-        // w-full h-full
-        className="rounded-xl h-auto w-full mb-3 overflow-hidden shadow-xs md:shadow-sm lg:shadow-md xl:shadow-lg 2xl:shadow-xl"
-        alt={name + " _image"}
-        src={CDN_URL + cloudinaryImageId}
-      />
+      <div className="relative w-full h-full">
+        <img
+          className="rounded-xl h-auto w-full tap-transparent object-cover mb-3 overflow-hidden shadow-xs md:shadow-sm lg:shadow-md xl:shadow-lg 2xl:shadow-xl"
+          alt={name + " _image"}
+          src={CDN_URL + cloudinaryImageId}
+        />
+        <div className="absolute grid px-3 pb-2 text-left bg-transparent bottom-1">
+          <div className="font-discount antialiased font-extrabold tracking-tighter w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase text-white">
+            {aggregatedDiscountInfoV3?.header} {aggregatedDiscountInfoV3?.subHeader}
+          </div>
+        </div>
+      </div>
       <div className="ml-3">
         <h3 className="font-bold font-cuisine text-lg text-[#02060cbf]">
           {name.length > 15 ? name.slice(0, 15) + "..." : name}
@@ -39,13 +51,14 @@ const RestaurantCard = (props) => {
 
 // Higher Order Component
 export const withDiscountLabel = (RestaurantCard) => {
-
   return (props) => {
     const { header, subHeader } = props?.resData?.aggregatedDiscountInfoV3;
     return (
-      <div className="">
-        <label className="font-discount antialiased font-extrabold w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase bg-black text-white">{header} {subHeader}</label>
-        <RestaurantCard {...props}/>
+      <div className="group">
+        <p className="grid bottom-0  px-3 pb-2 text-left h-auto inset-0 font-discount antialiased font-extrabold w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase bg-black text-white">
+          {header} {subHeader}
+        </p>
+        <RestaurantCard {...props} />
       </div>
     );
   };
