@@ -13,6 +13,7 @@ const RestaurantCard = (props) => {
   } = resData;
 
   return (
+
     <div className="cursor-pointer border-white ease-in-out hover:scale-110 transform transition duration-500  hover:subpixel-antialiased font-default">
       <div className="relative w-full h-full leading-5 -tracking-[0.5em] text-[14px] antialiased drop-shadow-md">
         <img
@@ -21,8 +22,8 @@ const RestaurantCard = (props) => {
           src={CDN_URL + cloudinaryImageId}
         />
         <div className="absolute grid px-3 pb-2 text-left bg-transparent bottom-1">
-          <div className="font-discount antialiased font-extrabold tracking-tighter w-full text-[22px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase text-[#ffffffeb]">
-            {aggregatedDiscountInfoV3?.header} {aggregatedDiscountInfoV3?.subHeader}
+          <div className="font-discount antialiased overflow-ellipsis whitespace-nowrap font-extrabold -tracking-[0.5px] w-[full] text-[20px] leading-[22px] break-words md:inline-flex overflow-hidden uppercase text-[#ffffffeb]">
+            {aggregatedDiscountInfoV3?.header} {aggregatedDiscountInfoV3?.subHeader}{"..."}
           </div>
         </div>
       </div>
