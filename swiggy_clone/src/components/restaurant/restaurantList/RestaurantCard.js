@@ -2,7 +2,8 @@ import { CDN_URL, RATING_URL } from "../../../utils/constants";
 
 const ResturantCard = (props) => {
   const { resData } = props;
-  const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } =
+  console.log(resData)
+  const { name, cuisines, avgRating, areaName, sla, cloudinaryImageId } =
     resData?.info;
 
   return (
@@ -28,11 +29,11 @@ const ResturantCard = (props) => {
             ? cuisines.slice(0, 2).join(", ") + "..."
             : cuisines.join(", ")}
         </h4>
-        <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
+        {/* <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
           {costForTwo}
-        </h4>
+        </h4> */}
         <h4 className="font-extralight font-cuisine text-base text-[#02060c99]">
-          {sla?.deliveryTime} minutes
+          {areaName}
         </h4>
       </div>
     </div>
