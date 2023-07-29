@@ -1,7 +1,46 @@
+/************************************ TAILWIND STYLES **********************************/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/**************************** DEFAULT STYLES  **************************************/
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-weight: 300;
+  color: #282c3f;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: arial,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -.5px;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, :after, :before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+  -ms-text-size-adjust: none;
+  outline: none;
+}
+
+/************************** RESAURANT LIST *********************************/
+
 .bg-gradient {
-    background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%) !important;
-  }
+  background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%) !important;
+}
