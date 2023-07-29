@@ -5,12 +5,7 @@ module.exports = {
     fontFamily: {
       default: ["ProximaNova", "arial", "Helvetica Neue", "sans-serif"],
       cuisine: ["Basis Grotesque Pro", "Arial", "sans-serif"],
-      discount: [
-        "ProximaNovaCond-Black",
-        "Arial",
-        "Helvetica Neue",
-        "sans-serif",
-      ],
+      discount: ["Basis Grotesque Pro", "Arial", "sans-serif"],
     },
     extend: {},
   },
