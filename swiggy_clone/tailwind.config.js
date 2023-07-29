@@ -6,6 +6,7 @@ module.exports = {
       default: ["ProximaNova", "arial", "Helvetica Neue", "sans-serif"],
       cuisine: ["Basis Grotesque Pro", "Arial", "sans-serif"],
       discount: ["Basis Grotesque Pro", "Arial", "sans-serif"],
+      icomoon: ['icomoon', 'sans-serif']
     },
     extend: {},
   },
