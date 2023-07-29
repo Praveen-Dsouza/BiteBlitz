@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
       </div>
       <SearchContext.Provider value={{ searchRestaurant: inputText, setInputText }}>
-        <div className="mx-[calc(10%+36px)] bg-[##ffffff00]">
+        <div className="bg-[##ffffff00]">
           {onlineStatus === false? <Error/> : <Outlet />}
         </div>
       </SearchContext.Provider>

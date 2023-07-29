@@ -13,32 +13,30 @@ const Home = () => {
   return restaurantList?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="my-8 mx-4">
-      <div className="grid flex-wrap p-0 item-center grid-cols-4 gap-8">
-        {restaurantList
-          ?.filter((res) => {
-            if (searchRestaurant === "") {
-              return res;
-            } else {
-              return res?.info?.name.toLowerCase().includes(searchRestaurant);
-            }
-          })
-          ?.map((restaurant) => (
-            <Link
-              key={restaurant?.info?.id}
-              to={`/restaurants/${restaurant?.info?.id}`}
-            >
-              {restaurant?.info?.promoted ? (
-                <RestaurantCardDicounted
-                  resData={restaurant?.info}
-                />
-              ) : (
-                <RestaurantCard
-                  resData={restaurant?.info}
-                />
-              )}
-            </Link>
-          ))}
+    <div className="mx-[calc(10%+36px)]">
+      <div className="my-8 mx-4">
+        <div className="grid flex-wrap p-0 item-center grid-cols-4 gap-8">
+          {restaurantList
+            ?.filter((res) => {
+              if (searchRestaurant === "") {
+                return res;
+              } else {
+                return res?.info?.name.toLowerCase().includes(searchRestaurant);
+              }
+            })
+            ?.map((restaurant) => (
+              <Link
+                key={restaurant?.info?.id}
+                to={`/restaurants/${restaurant?.info?.id}`}
+              >
+                {restaurant?.info?.promoted ? (
+                  <RestaurantCardDicounted resData={restaurant?.info} />
+                ) : (
+                  <RestaurantCard resData={restaurant?.info} />
+                )}
+              </Link>
+            ))}
+        </div>
       </div>
     </div>
   );
