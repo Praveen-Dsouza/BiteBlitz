@@ -2,7 +2,9 @@ import Shimmer from "../../Shimmer";
 import { Link, useParams } from "react-router-dom";
 import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-import { SEARCH_URL } from "../../../utils/constants";
+import { RAINY_URL, SEARCH_URL, STAR_URL } from "../../../utils/constants";
+import time from "../../../utils/images/time.png"
+import rupee from "../../../utils/images/rupee.png"
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -12,7 +14,7 @@ const RestaurantMenu = () => {
 
   // console.log('resInfo', resInfo.cards[0].card.card.info)
 
-  const { name, cuisines, costForTwoMessage, city, sla, avgRating, areaName } =
+  const { name, cuisines, costForTwoMessage, city, sla, avgRating, areaName, totalRatingsString } =
     resInfo?.cards[0]?.card?.card?.info;
 
   const categories =
@@ -87,6 +89,46 @@ const RestaurantMenu = () => {
                         className="px-1 text-[#fc8019] cursor-pointer bg-transparent outline-none text-left border-none "></button>
                       <span className="text-sm text-[#7e808c]"> ▾ </span>
                     </div>
+                  </div>
+                </div>
+                <button className="text-center p-2 float-right max-w-[100px] rounded-[6px] border-[1px] border-[#e9e9eb] menu-shadow text-inherit font-inherit">
+                  <span className="text-[#3d9b6d] pb-[10px] border-[1px] border-[#e9e9eb] font-bold mb-2 block" >
+                    <span className="font-icomoon font-normal non-italic leading-[1px] antialiased normal-case">
+                      <img className="h-[17px] w-[17px]" src={STAR_URL} alt="star_rating"/>
+                    </span>
+                    <span>{avgRating}</span>
+                  </span>
+                  <span className="text-[#8b8d97] font-semibold text-[11px] font-rating">
+                    {totalRatingsString}
+                  </span>
+                </button>
+              </div>
+              <ul>
+                <li className="mb-[18px] text-[#7e808c] flex items-start">
+                  <img className="mr-2 h-[18px] w-[18px]" src={RAINY_URL} alt="raing_img" />
+                  <span className="flex-grow-1">{sla?.lastMileTravel + " kms | It's raining. To compensate your delivery partner, additional delivery fee will apply"}</span>
+                </li>
+              </ul>
+              <hr className="border-b-[1px] border-[#d3d3d3] border-dashed mb-[18px] h-0 overflow-visible box-content"/>
+              <div className="mb-[18px]">
+                <ul className="text-[#3e4152] text-[15px] font-bold m-0 p-0 font-default lending-0 flex">
+                  <li className="flex mr-6 ">
+                    <img className="overflow-hidden mr-[10px] align-bottom h-[18px] w-[18px]" src={time} alt="time_img"/>
+                    <span className="my-1">{sla?.maxDeliveryTime} MINS</span>
+                  </li>
+                  <li className="flex text-[#3e4152] text-[15px] font-bold">
+                  <img className="overflow-hidden mr-[10px] align-bottom h-[19px] w-[19px]" src={rupee} alt="time_img"/>
+                  <span className="my-1">{costForTwoMessage}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* Coupon */}
+            <div>
+              <div className="px-[10px] pb-4 font-light font-default">
+                <div className="overflow-x-scroll overflow-y-hidden flex-col w-full">
+                  <div className="flex mb-[10px]">
+                    <div></div>
                   </div>
                 </div>
               </div>
