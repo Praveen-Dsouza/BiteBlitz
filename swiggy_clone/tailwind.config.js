@@ -13,6 +13,12 @@ module.exports = {
         "Helvetica Neue",
         "sans-serif",
       ],
+      offers: [
+        "ProximaNovaCondensedBold",
+        "arial",
+        "Helvetica Neue",
+        "sans-serif"
+      ],
     },
     extend: {},
   },
