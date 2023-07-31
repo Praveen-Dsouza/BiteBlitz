@@ -27,9 +27,6 @@ const CarouselItem = ({imgId, price, description, title}) => {
                   <div className="absolute right-[2px] -top-[35%] cursor-pointer transform origin-x-[-6px] origin-y-[6px] rotate-0">
                     +
                   </div>
-                  <div className="absolute w-[33.33%] cursor-pointer text-[150%] font-semibold hidden opacity-0 transform translate-z-0">
-                    +
-                  </div>
                   <div className="text-white text-[10px] font-medium w-full leading-[1px] top-[35px]">
                     Customisable
                   </div>

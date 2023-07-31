@@ -250,6 +250,10 @@ const RestaurantMenu = () => {
             </div>
           </div>
           {/* Menu Ends */}
+          {/* Accordian */}
+          {categories.map((category) => <RestaurantCategory data={category?.card?.card} />)}
+
+          {/* Accordian Ends */}
         </div>
       </div>
     </div>
