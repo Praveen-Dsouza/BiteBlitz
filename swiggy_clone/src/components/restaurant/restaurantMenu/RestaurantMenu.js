@@ -136,21 +136,21 @@ const RestaurantMenu = () => {
                   </div>
                 </div>
               </div>
-              <button className="text-center p-2 float-right max-w-[100px] rounded-[6px] border-[1px] border-[#e9e9eb] menu-shadow text-inherit font-inherit">
-                <span className="text-[#3d9b6d] pb-[10px] border-[1px] border-[#e9e9eb] font-bold mb-2 block">
-                  <span className="font-icomoon font-normal non-italic leading-[1px] antialiased normal-case">
+              <div className="text-center p-2 float-right max-w-[100px] rounded-[6px] border-[1px] border-[#e9e9eb] menu-shadow text-inherit font-inherit">
+                <span className="flex text-[#3d9b6d] px-3 pb-[10px] border-b-[1px] border-[#e9e9eb] font-bold mb-2">
+                  <span className="font-icomoon font-bold non-italic leading-[1px] antialiased normal-case">
                     <img
-                      className="h-[17px] w-[17px]"
+                      className="h-[14px] w-[14px]"
                       src={STAR_URL}
                       alt="star_rating"
                     />
-                  </span>
+                  </span>&nbsp;
                   <span>{avgRating}</span>
                 </span>
                 <span className="text-[#8b8d97] font-semibold text-[11px] font-rating">
                   {totalRatingsString}
                 </span>
-              </button>
+              </div>
             </div>
             {expectationNotifiers[0] && (
               <ul>
