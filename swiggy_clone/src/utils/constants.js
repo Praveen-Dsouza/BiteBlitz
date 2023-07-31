@@ -36,3 +36,5 @@ export const RATING_URL =
 export const RAINY_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_18,h_18/v1648208532/surgecreatives/rain"
 
 export const OFFER_ICON_CART= "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/Store_Assets/Icons/OfferIconCart"
+
+export const FSSAI_LOGO = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i"

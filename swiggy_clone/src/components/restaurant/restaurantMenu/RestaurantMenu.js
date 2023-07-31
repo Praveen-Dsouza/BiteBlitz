@@ -7,6 +7,7 @@ import { OFFER_ICON_CART, SEARCH_URL } from "../../../utils/constants";
 import RestaurantOffer from "./RestaurantOffer";
 import CarouselItem from "./CarouselItem";
 import RestaurantDetail from "./RestaurantDetail";
+import RestaurantLicense from "./RestaurantLicense";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -38,6 +39,22 @@ const RestaurantMenu = () => {
         cat?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
+
+  const license =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (license) =>
+        license?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
+    );
+
+  const resAddress =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (add) =>
+        add?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
+    );
+
+  console.log(resAddress);
 
   return resInfo === null ? (
     <Shimmer />
@@ -167,12 +184,24 @@ const RestaurantMenu = () => {
                 key={category?.card?.card?.title}
                 data={category?.card?.card}
                 showItems={index === showItems && true}
-                setShowItems={() => index === showItems? setShowItems(!index): setShowItems(index)}
+                setShowItems={() =>
+                  index === showItems
+                    ? setShowItems(!index)
+                    : setShowItems(index)
+                }
               />
             ))}
           </div>
 
           {/* Accordian Ends */}
+          {/* Restuarnt License */}
+          <RestaurantLicense
+            license={license[0]?.card?.card?.text}
+            resName={resAddress[0]?.card?.card?.name}
+            area={resAddress[0]?.card?.card?.area}
+            address={resAddress[0]?.card?.card?.completeAddress}
+          />
+          {/* License ends */}
         </div>
       </div>
     </div>
