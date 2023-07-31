@@ -1,5 +1,6 @@
 import ItemList from "./ItemList";
 import up_arrow from "../../../utils/images/up_arrow.png";
+import down_arrow from "../../../utils/images/down_arrow.png";
 import { useState } from "react";
 
 const RestaurantCategory = ({ data }) => {
@@ -20,7 +21,7 @@ const RestaurantCategory = ({ data }) => {
               </span>
             </h3>
             <span className="w-[19px] h-[19px]">
-              <img src={up_arrow} alt="down_arrow" />
+              <img src={showItems? up_arrow: down_arrow} alt="down_arrow" />
             </span>
           </div>
           {/* Accordian Body */}

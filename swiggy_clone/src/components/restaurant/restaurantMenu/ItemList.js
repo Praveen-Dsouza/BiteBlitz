@@ -11,7 +11,7 @@ const ItemList = ({ items }) => {
             <div className="w-[calc(100%-144px)]">
               <div className="">
                 <img
-                  className="h-[19px] w-[19px] leading-[1.2px] inline-block "
+                  className="h-[17px] w-[19px] leading-[1.2px] inline-block "
                   src={veg}
                   alt="veg_img"
                 />

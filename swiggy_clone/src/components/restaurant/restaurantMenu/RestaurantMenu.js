@@ -147,7 +147,7 @@ const RestaurantMenu = () => {
                 </span>
               </div>
             </div>
-            {expectationNotifiers[0] && (
+            {expectationNotifiers[0].text && (
               <ul>
                 <li className="mb-[18px] text-[#7e808c] flex items-start">
                   <img
