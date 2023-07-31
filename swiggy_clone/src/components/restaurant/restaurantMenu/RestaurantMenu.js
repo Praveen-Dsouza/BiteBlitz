@@ -11,7 +11,7 @@ import RestaurantDetail from "./RestaurantDetail";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
-  const [showItems, setShowItems] = useState(0);
+  const [showItems, setShowItems] = useState(null);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -167,7 +167,7 @@ const RestaurantMenu = () => {
                 key={category?.card?.card?.title}
                 data={category?.card?.card}
                 showItems={index === showItems && true}
-                setShowItems={() => setShowItems(index)}
+                setShowItems={() => index === showItems? setShowItems(!index): setShowItems(index)}
               />
             ))}
           </div>
