@@ -1,5 +1,4 @@
 const RestaurantOffer = ({
-  key,
   offerTag,
   imgUrl,
   header,
@@ -7,7 +6,7 @@ const RestaurantOffer = ({
   description,
 }) => {
   return (
-    <div className="mr-3" key={key}>
+    <div className="mr-3">
       <button className="flex border-[1px] border-[#e9e9eb] border-box rounded-lg p-2 h-full min-w-[200px] items-center bg-transparent cursor-pointer outline-none text-left m-0 color-inherit font-inherit overflow-visible offers-shadow">
         <div className="flex">
           {offerTag && (

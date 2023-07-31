@@ -28,6 +28,8 @@ export const MENU_URL =
 export const CDN_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_330,c_fill/";
 
+export const BANNER_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_628,h_704/";
+
 export const RATING_URL =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr51LTOl1FrHsHH-dynl-B7kaj-l4wkl_LEA&usqp=CAU";
 

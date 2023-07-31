@@ -11,6 +11,7 @@ import {
 import time from "../../../utils/images/time.png";
 import rupee from "../../../utils/images/rupee.png";
 import RestaurantOffer from "./RestaurantOffer";
+import CarouselItem from "./CarouselItem";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -34,8 +35,12 @@ const RestaurantMenu = () => {
 
   const { offers } = resInfo.cards[1]?.card?.card?.gridElements?.infoWithStyle;
 
-  const { title } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.title)
+  const { title, carousel } =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+  console.log(
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
+      ?.title
+  );
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -51,7 +56,7 @@ console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.car
       <div className="m-0 p-0">
         {/* Home, Add, Shop */}
         <div className="max-w-[800px] min-h-[800px] mx-auto mt-[20px] mb-0">
-          <div className="max-w-[700px] min-h-[700px] ml-0 z-[7] h-[30px] text-[9px] items-center relative mx-auto my-0 font-default">
+          <div className="max-w-[700px] min-w-[700px] ml-0 z-[7] h-[30px] text-[9px] items-center relative mx-auto my-0 font-default">
             <span className="text-[10px] text-[#93959f]">
               <Link
                 to="/"
@@ -147,7 +152,7 @@ console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.car
                 </span>
               </button>
             </div>
-            {expectationNotifiers && (
+            {expectationNotifiers[0] && (
               <ul>
                 <li className="mb-[18px] text-[#7e808c] flex items-start">
                   <img
@@ -207,22 +212,39 @@ console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.car
           {/* Coupon ends */}
           {/* Veg/Non-Veg option toggle */}
           <div>
-             <div className="mt-6 mx-4 flex items-center justify-between font-default">
-                  <div className="flex items-center h-[14px] tranform translate-z-0 backface-hidden">
-                    <div className="text-[#3d4152] font-semibold text-[16px] font-default">Veg Only</div>
-                    <button className="ml-3 text-0 p-0 cursor-pointer text-left outline-none">
-                      <span className="h-[18px] backface-hidden bg-[#d4d5d9] w-9 relative tranform translate-z-0 inline-block rounded-[4px] [contain:layout] [transition:background-color 0.25s linear]">
-                        <span className="border-[#00800000] absolute w-[18px] bg-white border-b-[2px] border-[#d4d5d9] rounded-[4px] backface-hidden "></span>
-                      </span>
-                    </button>
-                  </div>
-                  <div className="h-[0.5px] my-6 mx-auto w-[calc(100% - 32px)] border-b-[0.5px] border-[#d3d3d3]"></div>
-             </div>
+            <div className="mt-6 mx-4 flex items-center justify-between font-default">
+              <div className="flex items-center h-[14px] tranform translate-z-0 backface-hidden">
+                <div className="text-[#3d4152] font-semibold text-[16px] font-default">
+                  Veg Only
+                </div>
+                <button className="ml-3 text-0 p-0 cursor-pointer text-left outline-none">
+                  <span className="h-[18px] backface-hidden bg-[#d4d5d9] w-9 relative tranform translate-z-0 inline-block rounded-[4px] [contain:layout] [transition:background-color 0.25s linear]">
+                    <span className="border-[#00800000] absolute w-[18px] bg-white border-b-[2px] border-[#d4d5d9] rounded-[4px] backface-hidden "></span>
+                  </span>
+                </button>
+              </div>
+              <div className="h-[0.5px] my-6 mx-auto w-[calc(100% - 32px)] border-b-[0.5px] border-[#d3d3d3]"></div>
+            </div>
           </div>
           {/* Veg/Non-Veg option toggle Ends */}
           {/* Menu */}
-          <div className="w-full bg-white">
-            <h2 className="px-4 mb-6 font-default font-bold text-[18px]">{title}</h2>
+          <div className="flw-full bg-white">
+            <h2 className="px-4 mb-6 font-default font-extrabold text-[18px] antialiased leading-[1.2]">
+              {title}
+            </h2>
+            <div className="mb-3 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-pl-[25px] scroll-x-mandatory w-full">
+              {carousel.map((item) => {
+                return (
+                  <CarouselItem
+                    key={item?.bannerId}
+                    imgId={item.creativeId}
+                    title={item?.title}
+                    description={item?.dish?.info?.description}
+                    price={item?.dish?.info?.price}
+                  />
+                );
+              })}
+            </div>
           </div>
           {/* Menu Ends */}
         </div>
