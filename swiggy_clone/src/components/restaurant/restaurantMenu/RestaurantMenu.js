@@ -19,8 +19,6 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
 
-  // console.log('resInfo', resInfo.cards[0].card.card.info)
-
   const {
     name,
     cuisines,
@@ -37,10 +35,6 @@ const RestaurantMenu = () => {
 
   const { title, carousel } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-  console.log(
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-      ?.title
-  );
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -144,7 +138,8 @@ const RestaurantMenu = () => {
                       src={star}
                       alt="star_rating"
                     />
-                  </span>&nbsp;
+                  </span>
+                  &nbsp;
                   <span>{avgRating}</span>
                 </span>
                 <span className="text-[#8b8d97] font-semibold text-[11px] font-rating">
@@ -234,38 +229,35 @@ const RestaurantMenu = () => {
             </h2>
             <div className="mb-3 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-pl-[25px] scroll-x-mandatory w-full">
               <div className="inline-flex">
-              {carousel.map((item) => {
-                
-                return (
-                  <CarouselItem
-                    key={item?.bannerId}
-                    imgId={item.creativeId}
-                    title={item?.title}
-                    description={item?.dish?.info?.description}
-                    price={item?.dish?.info?.price}
+                {carousel.map((item) => {
+                  return (
+                    <CarouselItem
+                      key={item?.bannerId}
+                      imgId={item.creativeId}
+                      title={item?.title}
+                      description={item?.dish?.info?.description}
+                      price={item?.dish?.info?.price}
                     />
-                    );
-                  })}
-                  </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
           {/* Menu Ends */}
           {/* Accordian */}
-          {categories.map((category) => <RestaurantCategory data={category?.card?.card} />)}
+          <div>
+            {categories.map((category) => (
+              <RestaurantCategory
+                key={category?.card?.card?.title}
+                data={category?.card?.card}
+              />
+            ))}
+          </div>
 
           {/* Accordian Ends */}
         </div>
       </div>
     </div>
-    // <div className="text-center">
-    //   <h1 className="font-bold my-6 text-2xl">{name}</h1>
-    //   <p className="font-bold text-lg">
-    //     {cuisines.join(", ")} - {costForTwoMessage}
-    //   </p>
-    //   <h2 className="font-bold">Menu</h2>
-    //   {/* categories accordian */}
-    //   {categories.map((category) => <RestaurantCategory data={category?.card?.card} />)}
-    // </div>
   );
 };
 
