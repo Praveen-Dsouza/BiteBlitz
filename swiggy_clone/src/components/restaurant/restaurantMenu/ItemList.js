@@ -34,20 +34,22 @@ const ItemList = ({ items }) => {
               </div>
             </div>
             <div className="relative ml-4 min-w-[118px] h-[120px]">
-              <img
-                className="h-[96px] w-[118px] rounded-[6px] object-cover"
-                src={CDN_URL + item?.card?.info?.imageId}
-                alt="item_img"
-              />
+              <div className="h-[96px] w-[118px] rounded-[6px] object-cover bg-blend-overlay bg-[#e5f1d3]">
+                <img
+                  className="h-[96px] w-[118px] rounded-[6px] object-cover bg-blend-overlay bg-[#282c3f0d]"
+                  src={CDN_URL + item?.card?.info?.imageId}
+                  alt="item_img"
+                />
+              </div>
               <div className="absolute left-[50%] bottom-2 z-1 transform -translate-x-[50%]">
                 <div className="w-[96px] h-[36px] relative min-h-[36px] bottom-2 left-[50%]  transform -translate-x-[50%] rounded-[4px] leading-[32px] shadow-md border-[1px] border-[#d4d5d9] text-[#60b246] text-[0.9rem] font-semibold bg-white">
-                  <div className="text-[#60b246] w-full h-full cursor-pointer text-center">
+                  <div className="font-default text-[#60b246] w-full h-full cursor-pointer text-center">
                     ADD
                   </div>
                   <div className="absolute right-[2px] -top-[35%] cursor-pointer transform origin-x-[-6px] origin-y-[6px] rotate-0">
                     +
                   </div>
-                  <div className="text-[#7e808c] text-[10px] font-medium w-full leading-[12px] top-[35px] text-center ">
+                  <div className="font-default text-[#7e808c] text-[10px] font-medium w-full leading-[12px] top-[35px] text-center ">
                     Customisable
                   </div>
                 </div>
