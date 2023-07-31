@@ -1,13 +1,11 @@
 import ItemList from "./ItemList";
 import up_arrow from "../../../utils/images/up_arrow.png";
 import down_arrow from "../../../utils/images/down_arrow.png";
-import { useState } from "react";
 
-const RestaurantCategory = ({ data }) => {
-  const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({ data, showItems, setShowItems }) => {
   const handleClick = () => {
     setShowItems(!showItems);
-  }
+  };
 
   return (
     <div>

@@ -1,21 +1,17 @@
+import { useState } from "react";
 import Shimmer from "../../Shimmer";
 import { Link, useParams } from "react-router-dom";
 import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-import {
-  OFFER_ICON_CART,
-  RAINY_URL,
-  SEARCH_URL,
-} from "../../../utils/constants";
-import time from "../../../utils/images/time.png";
-import rupee from "../../../utils/images/rupee.png";
+import { OFFER_ICON_CART, SEARCH_URL } from "../../../utils/constants";
 import RestaurantOffer from "./RestaurantOffer";
 import CarouselItem from "./CarouselItem";
-import star from "../../../utils/images/star.png";
+import RestaurantDetail from "./RestaurantDetail";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const [showItems, setShowItems] = useState(0);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -90,99 +86,19 @@ const RestaurantMenu = () => {
               </button>
             </div>
           </div>
-          {/* Not required */}
-          <Link
-            className="absolute block text-[1px] leading-[1px] overflow-hidden whitespace-nowrap h-[1px] w-[1px]"
-            to="/"
-          >
-            Double click to skip to Browse Menu button
-          </Link>
-          <p className="absolute block text-[1px] leading-[1px] overflow-hidden whitespace-nowrap h-[1px] w-[1px]">
-            Restaurant name: {name}, Cuisines: {cuisines.join(", ")}
-            Rating: {avgRating}, Delivers in: {sla?.deliveryTime} MINS, Cost is:{" "}
-            {costForTwoMessage},
-          </p>
-          {/* Not required Ends*/}
+
           {/* Resturant Name Address */}
-          <div className="px-4">
-            <div className="pt-4 mb-[18px] ">
-              <div className="inline-block mr-4 w-[calc(100%-120px)]">
-                <div>
-                  <p className="text-[1.43rem] font-semibold text-[#282c3f] mb-2 capitalize">
-                    {name}
-                  </p>
-                  <p className="text-[0.93rem] h-[calc(0.93rem+2px)] text-[#7e808c] mb-[4px] overflow-ellipsis overflow-hidden whitespace-nowrap ">
-                    {cuisines.join(", ")}
-                  </p>
-                </div>
-                <div className="flex items-center h-4">
-                  <p className="text-[0.93rem] text-[#7e808c]">{areaName}</p>
-                  &nbsp;
-                  <p className="text-[0.93rem] text-[#7e808c]">
-                    {sla?.lastMileTravel}
-                  </p>
-                  <div className="block">
-                    <button
-                      aria-label="Selected outlet is Santacruz East, 1.5 km away. Double tap to change outlet."
-                      className="px-1 text-[#fc8019] cursor-pointer bg-transparent outline-none text-left border-none "
-                    ></button>
-                    <span className="text-sm text-[#7e808c]"> ▾ </span>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center p-2 float-right max-w-[100px] rounded-[6px] border-[1px] border-[#e9e9eb] menu-shadow text-inherit font-inherit">
-                <span className="flex text-[#3d9b6d] px-3 pb-[10px] border-b-[1px] border-[#e9e9eb] font-bold mb-2">
-                  <span className="font-icomoon font-bold non-italic leading-[1px] antialiased normal-case">
-                    <img
-                      className="h-[15px] w-[15px]"
-                      src={star}
-                      alt="star_rating"
-                    />
-                  </span>
-                  &nbsp;
-                  <span>{avgRating}</span>
-                </span>
-                <span className="text-[#8b8d97] font-semibold text-[11px] font-rating">
-                  {totalRatingsString}
-                </span>
-              </div>
-            </div>
-            {expectationNotifiers[0].text && (
-              <ul>
-                <li className="mb-[18px] text-[#7e808c] flex items-start">
-                  <img
-                    className="mr-2 h-[18px] w-[18px]"
-                    src={RAINY_URL}
-                    alt="raing_img"
-                  />
-                  <span className="flex-grow-1">
-                    {expectationNotifiers[0]?.text}
-                  </span>
-                </li>
-              </ul>
-            )}
-            <hr className="border-b-[1px] border-[#d3d3d3] border-dashed mb-[18px] h-0 overflow-visible box-content" />
-            <div className="mb-[18px]">
-              <ul className="text-[#3e4152] text-[15px] font-bold m-0 p-0 font-default lending-0 flex">
-                <li className="flex mr-6 ">
-                  <img
-                    className="overflow-hidden mr-[10px] align-bottom h-[18px] w-[18px]"
-                    src={time}
-                    alt="time_img"
-                  />
-                  <span className="my-1">{sla?.maxDeliveryTime} MINS</span>
-                </li>
-                <li className="flex text-[#3e4152] text-[15px] font-bold">
-                  <img
-                    className="overflow-hidden mr-[10px] align-bottom h-[19px] w-[19px]"
-                    src={rupee}
-                    alt="time_img"
-                  />
-                  <span className="my-1">{costForTwoMessage}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <RestaurantDetail
+            name={name}
+            cuisines={cuisines}
+            areaName={areaName}
+            avgRating={avgRating}
+            maxDeliveryTime={sla?.maxDeliveryTime}
+            notifier={expectationNotifiers[0]?.text}
+            distance={sla?.lastMileTravel}
+            costForTwoMessage={costForTwoMessage}
+            totalRatingsString={totalRatingsString}
+          />
           {/* Coupon = Card 1 */}
           <div>
             <div className="px-[10px] pb-4 font-light font-default">
@@ -246,10 +162,12 @@ const RestaurantMenu = () => {
           {/* Menu Ends */}
           {/* Accordian */}
           <div>
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <RestaurantCategory
                 key={category?.card?.card?.title}
                 data={category?.card?.card}
+                showItems={index === showItems && true}
+                setShowItems={() => setShowItems(index)}
               />
             ))}
           </div>
