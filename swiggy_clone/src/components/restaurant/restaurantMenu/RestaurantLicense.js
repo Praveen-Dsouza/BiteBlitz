@@ -15,7 +15,7 @@ const RestaurantLicense = ({license, resName, area, address}) => {
         </div>
       </div>
       <div className="text-[1rem] bg-[#f1f1f6] text-[#93959f] font-default px-4 pb-[120px]">
-        <p className="font-semibold border-t-[1px] border-[#a9abb2] capitalize">
+        <p className="font-semibold border-t-[1px] border-[#a9abb2] capitalize pt-4">
           {resName}
         </p>
         <p>({"Outlet:" + area})</p>
