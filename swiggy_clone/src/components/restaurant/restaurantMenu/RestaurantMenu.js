@@ -6,12 +6,12 @@ import {
   OFFER_ICON_CART,
   RAINY_URL,
   SEARCH_URL,
-  STAR_URL,
 } from "../../../utils/constants";
 import time from "../../../utils/images/time.png";
 import rupee from "../../../utils/images/rupee.png";
 import RestaurantOffer from "./RestaurantOffer";
 import CarouselItem from "./CarouselItem";
+import star from "../../../utils/images/star.png";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -140,8 +140,8 @@ const RestaurantMenu = () => {
                 <span className="flex text-[#3d9b6d] px-3 pb-[10px] border-b-[1px] border-[#e9e9eb] font-bold mb-2">
                   <span className="font-icomoon font-bold non-italic leading-[1px] antialiased normal-case">
                     <img
-                      className="h-[14px] w-[14px]"
-                      src={STAR_URL}
+                      className="h-[15px] w-[15px]"
+                      src={star}
                       alt="star_rating"
                     />
                   </span>&nbsp;
