@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { OFFER_ICON_URL, SEARCH_URL } from "../../../utils/constants";
-import RestaurantOffer from "./RestaurantOffer";
+import RestaurantOfferCard from "./RestaurantOfferCard";
 import RestaurantDetail from "./RestaurantDetail";
 import RestaurantLicense from "./RestaurantLicense";
 import Toggle from "./Toggle";
@@ -38,6 +38,8 @@ const RestaurantMenu = () => {
 
   const { title, carousel } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+    console.log(carousel);
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -127,7 +129,7 @@ const RestaurantMenu = () => {
                 <div className="flex mb-[10px]">
                   {offers.map((offer) => {
                     return (
-                      <RestaurantOffer
+                      <RestaurantOfferCard
                         key={offer?.info?.offerIds[0]}
                         offerTag={offer?.info?.offerTag}
                         imgUrl={OFFER_ICON_URL + offer?.info?.offerLogo}

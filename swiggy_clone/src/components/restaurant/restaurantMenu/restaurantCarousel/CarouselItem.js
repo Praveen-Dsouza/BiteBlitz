@@ -5,7 +5,7 @@ const CarouselItem = ({ imgId, price, description, title }) => {
     <div className="ml-[16px] min-w-[60%] min-h-full relative">
       <div className="w-[calc(30vw-54px)] h-[calc(33.6vw-60.48px)] rounded-[20px] relative whitespace-normal inline-block">
         <img
-          className="w-full block rounded-[4px] overflow-clip"
+          className="w-full block rounded-[20px] overflow-clip"
           src={BANNER_URL + imgId}
           alt={title}
         />

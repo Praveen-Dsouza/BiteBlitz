@@ -1,4 +1,4 @@
-const RestaurantOffer = ({
+const RestaurantOfferCard = ({
   offerTag,
   imgUrl,
   header,
@@ -40,4 +40,4 @@ const RestaurantOffer = ({
   );
 };
 
-export default RestaurantOffer;
+export default RestaurantOfferCard;
