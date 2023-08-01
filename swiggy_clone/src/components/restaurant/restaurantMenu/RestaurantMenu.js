@@ -8,6 +8,7 @@ import RestaurantOffer from "./RestaurantOffer";
 import CarouselItem from "./CarouselItem";
 import RestaurantDetail from "./RestaurantDetail";
 import RestaurantLicense from "./RestaurantLicense";
+import Toggle from "./Toggle";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -142,24 +143,11 @@ const RestaurantMenu = () => {
             </div>
           </div>
           {/* Coupon ends */}
+          
           {/* Veg/Non-Veg option toggle */}
-          <div>
-            <div className="mt-6 mx-4 flex items-center justify-between font-default">
-              <div className="flex items-center h-[14px] tranform translate-z-0 backface-hidden">
-                <div className="text-[#3d4152] font-semibold text-[16px] font-default">
-                  Veg Only
-                </div>
-                {/* <button onClick={handleItemFilter} className="ml-3 text-0 p-0 cursor-pointer text-left outline-none">
-                  <span className="h-[18px] backface-hidden bg-[#d4d5d9] w-9 relative tranform translate-z-0 inline-block rounded-[4px] [contain:layout] [transition:background-color 0.25s linear]">
-                    <span className="border-[#00800000] absolute w-[18px] bg-white border-b-[2px] border-[#d4d5d9] rounded-[4px] backface-hidden ">btn</span>
-                  </span>
-                </button> */}
-                <button className="" onClick={handleItemFilter}>click</button>
-              </div>
-              <div className="h-[0.5px] my-6 mx-auto w-[calc(100% - 32px)] border-b-[0.5px] border-[#d3d3d3]"></div>
-            </div>
-          </div>
+          <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} />
           {/* Veg/Non-Veg option toggle Ends */}
+
           {/* Menu */}
           <div className="flw-full bg-white">
             <h2 className="px-4 mb-6 font-default font-extrabold text-[18px] antialiased leading-[1.2]">
