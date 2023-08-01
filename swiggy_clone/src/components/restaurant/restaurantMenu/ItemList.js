@@ -13,7 +13,7 @@ const ItemList = ({ items, toggleVeg }) => {
               <div className="">
                 <img
                   className="h-[17px] w-[19px] leading-[1.2px] inline-block "
-                  src={toggleVeg === false ? veg : non_veg}
+                  src={toggleVeg ? veg : non_veg}
                   alt="veg_img"
                 />
               </div>

@@ -4,7 +4,6 @@ import down_arrow from "../../../utils/images/down_arrow.png";
 import { useEffect, useState } from "react";
 
 const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
-  console.log(toggleVeg);
   const handleClick = () => {
     setShowItems(!showItems);
   };
@@ -20,9 +19,9 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
   const [filterVeg, setFilterVeg] = useState(nonVegData);
 
   useEffect(() => {
-    if (toggleVeg === false) {
+    if (toggleVeg === true) {
       setFilterVeg(vegData);
-    } else if (toggleVeg === true) {
+    } else if (toggleVeg === false) {
       setFilterVeg(nonVegData);
     }
   

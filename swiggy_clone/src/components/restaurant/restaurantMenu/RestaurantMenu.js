@@ -14,12 +14,11 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const [showItems, setShowItems] = useState(null);
-  const [toggleVeg, setToggleVeg] = useState(true);
+  const [toggleVeg, setToggleVeg] = useState(false);
 
   const handleItemFilter = () => {
-    setToggleVeg(!toggleVeg)
-    // console.log("Veg Filter", toggleVeg)
-  }
+    setToggleVeg(!toggleVeg);
+  };
 
   if (resInfo === null) return <Shimmer />;
 
@@ -47,7 +46,7 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  console.log('categories', categories)
+  console.log("carousel", carousel);
 
   const license =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -145,14 +144,19 @@ const RestaurantMenu = () => {
             </div>
           </div>
           {/* Coupon ends */}
-           
+
           {/* Veg/Non-Veg option toggle */}
           <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} />
           {/* Veg/Non-Veg option toggle Ends */}
 
           {/* Menu */}
-          <RestaurantCarousel carousel={carousel} title={title} />
+          <RestaurantCarousel
+            carousel={carousel}
+            title={title}
+            toggleVeg={toggleVeg}
+          />
           {/* Menu Ends */}
+
           {/* Accordian */}
           <div>
             {categories.map((category, index) => (

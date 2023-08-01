@@ -10,18 +10,18 @@ const Toggle = ({ toggle, handleToggle }) => {
             <span
               onClick={handleToggle}
               className={`h-[18px] backface-hidden w-[36px] relative inline-block transition-all duration-250 ease-linear rounded-[4px] [contain:layout] ${
-                toggle === false ? "bg-[#008000]" : "bg-[#d4d5d9]"
+                toggle ? "bg-[#008000]" : "bg-[#d4d5d9]"
               }`}
             >
               <span
                 className={`absolute w-[18px] h-[18px] bg-white rounded-[4px] backface-hidden border-[2px]  ${
-                  toggle === false
+                  toggle
                     ? "border-[#008000] toggleVeg"
                     : "border-[#d4d5d9]"
                 }`}
               >
                 {toggle && <span className="opactity-0"></span>}
-                {toggle === false && (
+                {toggle && (
                   <span className="opactity-1">
                     <span className="bg-[#0f8a65] w-2 h-2 rounded-[50%] block absolute left-[50%] top-[50%] transform -translate-x-1/2 -translate-y-1/2 "></span>
                   </span>
