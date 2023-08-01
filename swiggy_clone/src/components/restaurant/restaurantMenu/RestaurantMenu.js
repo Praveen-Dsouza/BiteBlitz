@@ -8,7 +8,7 @@ import RestaurantOffer from "./RestaurantOffer";
 import RestaurantDetail from "./RestaurantDetail";
 import RestaurantLicense from "./RestaurantLicense";
 import Toggle from "./Toggle";
-import RestaurantCarousel from "./RestaurantCarousel";
+import RestaurantCarousel from "./restaurantCarousel/RestaurantCarousel";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -45,8 +45,6 @@ const RestaurantMenu = () => {
         cat?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-
-  console.log("carousel", carousel);
 
   const license =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
