@@ -13,6 +13,12 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const [showItems, setShowItems] = useState(null);
+  const [toggleVeg, setToggleVeg] = useState(true);
+
+  const handleItemFilter = () => {
+    setToggleVeg(!toggleVeg)
+    // console.log("Veg Filter", toggleVeg)
+  }
 
   if (resInfo === null) return <Shimmer />;
 
@@ -34,7 +40,7 @@ const RestaurantMenu = () => {
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   const categories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (cat) =>
         cat?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -53,8 +59,6 @@ const RestaurantMenu = () => {
         add?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
     );
-
-  console.log(resAddress);
 
   return resInfo === null ? (
     <Shimmer />
@@ -145,11 +149,12 @@ const RestaurantMenu = () => {
                 <div className="text-[#3d4152] font-semibold text-[16px] font-default">
                   Veg Only
                 </div>
-                <button className="ml-3 text-0 p-0 cursor-pointer text-left outline-none">
+                {/* <button onClick={handleItemFilter} className="ml-3 text-0 p-0 cursor-pointer text-left outline-none">
                   <span className="h-[18px] backface-hidden bg-[#d4d5d9] w-9 relative tranform translate-z-0 inline-block rounded-[4px] [contain:layout] [transition:background-color 0.25s linear]">
-                    <span className="border-[#00800000] absolute w-[18px] bg-white border-b-[2px] border-[#d4d5d9] rounded-[4px] backface-hidden "></span>
+                    <span className="border-[#00800000] absolute w-[18px] bg-white border-b-[2px] border-[#d4d5d9] rounded-[4px] backface-hidden ">btn</span>
                   </span>
-                </button>
+                </button> */}
+                <button className="" onClick={handleItemFilter}>click</button>
               </div>
               <div className="h-[0.5px] my-6 mx-auto w-[calc(100% - 32px)] border-b-[0.5px] border-[#d3d3d3]"></div>
             </div>
@@ -189,6 +194,7 @@ const RestaurantMenu = () => {
                     ? setShowItems(!index)
                     : setShowItems(index)
                 }
+                toggleVeg={toggleVeg}
               />
             ))}
           </div>
