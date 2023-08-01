@@ -36,8 +36,6 @@ const RestaurantMenu = () => {
 
   const { offers } = resInfo.cards[1]?.card?.card?.gridElements?.infoWithStyle;
 
-  console.log(offers);
-
   const { title, carousel } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
