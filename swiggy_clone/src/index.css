@@ -3,7 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/**************************** DEFAULT STYLES  **************************************/
+/************************************ TAILWIND ENDS **********************************/
+
+/****************************** DEFAULT STYLES  **************************************/
 
 body, html {
   margin: 0;
@@ -38,8 +40,34 @@ html {
   -ms-text-size-adjust: none;
   outline: none;
 }
+/****************************** DEFAULT STYLES  **************************************/
 
-/************************** RESAURANT LIST *********************************/
+/****************************** SCROLL BAR *******************************************/
+
+.scrollbar {
+
+  /* width */
+  ::-webkit-scrollbar {
+    border-radius: 8px;
+    height: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f6;
+    border-radius: 8px
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #d4d5d9;
+    border-radius: 8px;
+  }
+}
+
+/****************************** SCROLL BAR *******************************************/
+
+/****************************** RESAURANT LIST ***************************************/
 
 .bg-gradient {
   background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%) !important;
@@ -55,3 +83,5 @@ html {
 .toggleVeg {
   transform: translate3d(18px,0,0)
 }
+
+/****************************** RESAURANT LIST ***************************************/
