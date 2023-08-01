@@ -1,7 +1,8 @@
 import { CDN_URL } from "../../../utils/constants";
 import veg from "../../../utils/images/veg.png";
+import non_veg from "../../../utils/images/non_veg.png";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, toggleVeg }) => {
   return (
     <div>
       {items.map((item) => (
@@ -12,7 +13,7 @@ const ItemList = ({ items }) => {
               <div className="">
                 <img
                   className="h-[17px] w-[19px] leading-[1.2px] inline-block "
-                  src={veg}
+                  src={toggleVeg === false ? veg : non_veg}
                   alt="veg_img"
                 />
               </div>
@@ -46,16 +47,16 @@ const ItemList = ({ items }) => {
                   <div className="font-default text-[#60b246] w-full h-full cursor-pointer text-center">
                     ADD
                   </div>
-                  {item?.card?.info?.addons && 
-                  <div>
-                    <div className="absolute right-[2px] -top-[35%] cursor-pointer transform origin-x-[-6px] origin-y-[6px] rotate-0">
-                    +
-                  </div>
-                  <div className="font-default text-[#7e808c] text-[10px] font-medium w-full leading-[12px] top-[35px] text-center ">
-                    Customisable
-                  </div>
-                  </div>
-                  }
+                  {item?.card?.info?.addons && (
+                    <div>
+                      <div className="absolute right-[2px] -top-[35%] cursor-pointer transform origin-x-[-6px] origin-y-[6px] rotate-0">
+                        +
+                      </div>
+                      <div className="font-default text-[#7e808c] text-[10px] font-medium w-full leading-[12px] top-[35px] text-center ">
+                        Customisable
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

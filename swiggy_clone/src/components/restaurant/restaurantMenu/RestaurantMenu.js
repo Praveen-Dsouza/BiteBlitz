@@ -47,6 +47,8 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
+  console.log('categories', categories)
+
   const license =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (license) =>
@@ -143,7 +145,7 @@ const RestaurantMenu = () => {
             </div>
           </div>
           {/* Coupon ends */}
-          
+           
           {/* Veg/Non-Veg option toggle */}
           <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} />
           {/* Veg/Non-Veg option toggle Ends */}

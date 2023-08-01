@@ -25,6 +25,8 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
     } else if (toggleVeg === true) {
       setFilterVeg(nonVegData);
     }
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggleVeg]);
 
   return (
@@ -47,7 +49,7 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
               </span>
             </div>
             {/* Accordian Body */}
-            <div>{showItems && <ItemList items={filterVeg} />}</div>
+            <div>{showItems && <ItemList items={filterVeg} toggleVeg={toggleVeg} />}</div>
           </div>
         </div>
       </div>
