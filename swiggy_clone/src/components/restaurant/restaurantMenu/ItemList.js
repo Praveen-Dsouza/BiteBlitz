@@ -52,7 +52,7 @@ const ItemList = ({ items, toggleVeg }) => {
                       <div className="absolute right-[2px] -top-[35%] cursor-pointer transform origin-x-[-6px] origin-y-[6px] rotate-0">
                         +
                       </div>
-                      <div className="font-default text-[#7e808c] text-[10px] font-medium w-full leading-[12px] top-[35px] text-center ">
+                      <div className="font-default text-[#7e808c] text-[10px] font-medium w-full leading-[12px] top-[35px] text-center cursor-pointer">
                         Customisable
                       </div>
                     </div>

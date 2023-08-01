@@ -125,7 +125,7 @@ const RestaurantMenu = () => {
           {/* Coupon = Card 1 */}
           <div>
             <div className="px-[10px] pb-4 font-light font-default scrollbar">
-              <div className="overflow-x-scroll overflow-y-hidden flex-col w-full">
+              <div className="overflow-x-scroll overflow-y-hidden flex-col w-full cursor-pointer">
                 <div className="flex mb-[10px]">
                   {offers.map((offer) => {
                     return (
