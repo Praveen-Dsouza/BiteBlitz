@@ -24,7 +24,7 @@ const ItemList = ({ items, toggleVeg }) => {
               </div>
               <div className="mt-1 align-center">
                 <span className="text[1rem] mr-2 font-normal text-[3e4152]">
-                  ₹ &nbsp;
+                  ₹&nbsp;
                   {item?.card?.info?.price
                     ? item?.card?.info?.price / 100
                     : item?.card?.info?.defaultPrice}
