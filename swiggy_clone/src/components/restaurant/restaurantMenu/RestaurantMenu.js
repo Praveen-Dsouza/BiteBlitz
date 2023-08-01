@@ -5,10 +5,10 @@ import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { OFFER_ICON_CART, SEARCH_URL } from "../../../utils/constants";
 import RestaurantOffer from "./RestaurantOffer";
-import CarouselItem from "./CarouselItem";
 import RestaurantDetail from "./RestaurantDetail";
 import RestaurantLicense from "./RestaurantLicense";
 import Toggle from "./Toggle";
+import RestaurantCarousel from "./RestaurantCarousel";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -151,26 +151,7 @@ const RestaurantMenu = () => {
           {/* Veg/Non-Veg option toggle Ends */}
 
           {/* Menu */}
-          <div className="flw-full bg-white">
-            <h2 className="px-4 mb-6 font-default font-extrabold text-[18px] antialiased leading-[1.2]">
-              {title}
-            </h2>
-            <div className="mb-3 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-pl-[25px] scroll-x-mandatory w-full">
-              <div className="inline-flex">
-                {carousel.map((item) => {
-                  return (
-                    <CarouselItem
-                      key={item?.bannerId}
-                      imgId={item.creativeId}
-                      title={item?.title}
-                      description={item?.dish?.info?.description}
-                      price={item?.dish?.info?.price}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          <RestaurantCarousel carousel={carousel} title={title} />
           {/* Menu Ends */}
           {/* Accordian */}
           <div>
