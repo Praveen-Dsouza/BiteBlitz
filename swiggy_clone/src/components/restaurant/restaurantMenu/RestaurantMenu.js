@@ -3,7 +3,7 @@ import Shimmer from "../../Shimmer";
 import { Link, useParams } from "react-router-dom";
 import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-import { OFFER_ICON_CART, SEARCH_URL } from "../../../utils/constants";
+import { OFFER_ICON_URL, SEARCH_URL } from "../../../utils/constants";
 import RestaurantOffer from "./RestaurantOffer";
 import RestaurantDetail from "./RestaurantDetail";
 import RestaurantLicense from "./RestaurantLicense";
@@ -35,6 +35,8 @@ const RestaurantMenu = () => {
   } = resInfo?.cards[0]?.card?.card?.info;
 
   const { offers } = resInfo.cards[1]?.card?.card?.gridElements?.infoWithStyle;
+
+  console.log(offers);
 
   const { title, carousel } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
@@ -130,7 +132,7 @@ const RestaurantMenu = () => {
                       <RestaurantOffer
                         key={offer?.info?.offerIds[0]}
                         offerTag={offer?.info?.offerTag}
-                        imgUrl={OFFER_ICON_CART}
+                        imgUrl={OFFER_ICON_URL + offer?.info?.offerLogo}
                         header={offer?.info?.header}
                         couponCode={offer?.info?.couponCode}
                         description={offer?.info?.description}
