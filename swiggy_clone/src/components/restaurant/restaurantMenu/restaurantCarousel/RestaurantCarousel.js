@@ -2,12 +2,12 @@ import CarouselItem from "./CarouselItem";
 import { useState, useEffect } from "react";
 
 const RestaurantCarousel = ({ title, carousel, toggleVeg }) => {
-  const nonVegData = carousel.filter(
-    (item) => item.dish.info.itemAttribute.vegClassifier === "NONVEG"
+  const nonVegData = carousel?.filter(
+    (item) => item?.dish?.info?.itemAttribute?.vegClassifier === "NONVEG"
   );
 
-  const vegData = carousel.filter(
-    (item) => item.dish.info.itemAttribute.vegClassifier === "VEG"
+  const vegData = carousel?.filter(
+    (item) => item?.dish?.info?.itemAttribute?.vegClassifier === "VEG"
   );
 
   const [filterCarousel, setFilterCarousel] = useState(nonVegData);
@@ -27,15 +27,14 @@ const RestaurantCarousel = ({ title, carousel, toggleVeg }) => {
       <h2 className="px-4 mb-6 font-default font-extrabold text-[18px] antialiased leading-[1.2]">
         {title}
       </h2>
-      <div className="mb-3 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-pl-[25px] scroll-x-mandatory w-full">
+      <div className="mb-3 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-pl-[25px] scroll-x-mandatory w-full scrollbar">
         <div className="inline-flex">
           {filterCarousel?.map((item) => {
             return (
               <CarouselItem
                 key={item?.bannerId}
-                imgId={item.creativeId}
+                imgId={item?.creativeId}
                 title={item?.title}
-                description={item?.dish?.info?.description}
                 price={item?.dish?.info?.price}
               />
             );
