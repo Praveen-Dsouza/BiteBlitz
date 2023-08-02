@@ -2,7 +2,7 @@ import { CDN_URL, RATING_URL } from "../../../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  console.log(resData);
+  // console.log(resData);
   const {
     name,
     cuisines,

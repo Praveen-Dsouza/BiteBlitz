@@ -2,11 +2,21 @@ import ItemList from "./ItemList";
 import up_arrow from "../../../utils/images/up_arrow.png";
 import down_arrow from "../../../utils/images/down_arrow.png";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../utils/storeSlices/cart";
 
 const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
   const handleClick = () => {
     setShowItems(!showItems);
   };
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // Dispatch action
+    dispatch(addItem(item));
+  }
+
 
   const nonVegData = data.itemCards.filter(
     (veg) => veg.card.info.itemAttribute.vegClassifier === "NONVEG"
@@ -48,7 +58,7 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
               </span>
             </div>
             {/* Accordian Body */}
-            <div>{showItems && <ItemList items={filterVeg} toggleVeg={toggleVeg} />}</div>
+            <div>{showItems && <ItemList items={filterVeg} toggleVeg={toggleVeg} handleAddItem={handleAddItem} btnText={"ADD"} />}</div>
           </div>
         </div>
       </div>
