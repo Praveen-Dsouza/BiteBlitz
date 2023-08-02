@@ -39,7 +39,7 @@ const RestaurantMenu = () => {
   const { title, carousel } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
-    console.log(carousel);
+  console.log(carousel);
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -102,11 +102,13 @@ const RestaurantMenu = () => {
               </div>
             </div>
             <div className="h-full">
-              <button className="text-[18px] min-w-[42px] overflow-hidden relative float-right flex items-center justify-center h-full px-3 bg-transparent border-none cursor-pointer outline-none text-left text-inherit font-family-inherit font-size-inherit font-weight-inherit appearance-none text-normal">
-                <span className="font-icomoon speak-none font-normal normal-nums-ordinal text-normal leading-[1px] antialiased h-[19px] w-[19px]">
-                  <img src={SEARCH_URL} alt="search_img" />
-                </span>
-              </button>
+              <Link to={`/restaurants/${resId}/search`}>
+                <button className="text-[18px] min-w-[42px] overflow-hidden relative float-right flex items-center justify-center h-full px-3 bg-transparent border-none cursor-pointer outline-none text-left text-inherit font-family-inherit font-size-inherit font-weight-inherit appearance-none text-normal">
+                  <span className="font-icomoon speak-none font-normal normal-nums-ordinal text-normal leading-[1px] antialiased h-[19px] w-[19px]">
+                    <img src={SEARCH_URL} alt="search_img" />
+                  </span>
+                </button>
+              </Link>
             </div>
           </div>
 

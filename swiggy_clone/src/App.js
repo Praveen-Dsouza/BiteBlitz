@@ -8,6 +8,7 @@ import PageNotFound from "./components/PageNotFound";
 import RestaurantMenu from "./components/restaurant/restaurantMenu/RestaurantMenu";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Glitch from "./components/Glitch";
+import SearchRestaurantMenu from "./components/restaurant/restaurantMenu/SearchRestaurantMenu";
 
 const appRouter = createBrowserRouter([
   {
@@ -19,8 +20,15 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "restaurants/:resId",
+        path: "restaurants/:resId/",
         element: <RestaurantMenu />,
+        // children: [
+          
+        // ]
+      },
+      {
+        path: "restaurants/:resId/search/",
+        element: <SearchRestaurantMenu/>
       },
       {
         path: "offers-near-me",
