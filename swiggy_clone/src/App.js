@@ -9,6 +9,8 @@ import RestaurantMenu from "./components/restaurant/restaurantMenu/RestaurantMen
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Glitch from "./components/Glitch";
 import SearchRestaurantMenu from "./components/restaurant/restaurantMenu/SearchRestaurantMenu";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,12 +25,12 @@ const appRouter = createBrowserRouter([
         path: "restaurants/:resId/",
         element: <RestaurantMenu />,
         // children: [
-          
+
         // ]
       },
       {
         path: "restaurants/:resId/search/",
-        element: <SearchRestaurantMenu/>
+        element: <SearchRestaurantMenu />,
       },
       {
         path: "offers-near-me",
@@ -57,9 +59,11 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <div className="">
-      <React.StrictMode>
-        <RouterProvider router={appRouter} />
-      </React.StrictMode>
+      <Provider store={appStore}>
+        <React.StrictMode>
+          <RouterProvider router={appRouter} />
+        </React.StrictMode>
+      </Provider>
     </div>
   );
 }

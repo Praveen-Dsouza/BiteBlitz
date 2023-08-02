@@ -12,17 +12,21 @@ import { useContext, useState } from "react";
 import SearchContext from "../utils/SearchContext";
 import useOnlineStatus from "../utils/hooks/useOnlineStatus";
 import Error from "./Error";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { searchRestaurant } = useContext(SearchContext)
   const [inputText, setInputText] = useState(searchRestaurant);
   const onlineStatus = useOnlineStatus();
 
+  // Subscribing to the store using a Selector 
+  const cartItems = useSelector((store) => store.cart.items);
+
+  console.log('cartItems', cartItems);
+
   let inputHandler = (e) => {
       var lowerCase = e?.target?.value?.toLowerCase();
-      console.log('navbar', lowerCase)
       setInputText(lowerCase);
-    
   };
 
   return (
@@ -85,17 +89,17 @@ const Navbar = () => {
                   src={CART_URL}
                   alt="cart-icon"
                 />
-                <span className="my-1">Cart</span>
+                <span className="my-1">Cart - {cartItems?.length}</span>
               </Link>
             </li>
           </ul>
         </div>
       </div>
-      <SearchContext.Provider value={{ searchRestaurant: inputText, setInputText }}>
-        <div className="bg-[##ffffff00]">
-          {onlineStatus === false? <Error/> : <Outlet />}
-        </div>
-      </SearchContext.Provider>
+        <SearchContext.Provider value={{ searchRestaurant: inputText, setInputText }}>
+          <div className="bg-[##ffffff00]">
+            {onlineStatus === false? <Error/> : <Outlet />}
+          </div>
+        </SearchContext.Provider>
     </>
   );
 };
