@@ -1,11 +1,10 @@
 import pure_veg from "../../../utils/images/pure_veg.png"
-import { dataLength } from "../../../utils/services";
 
 const Toggle = ({ toggle, handleToggle }) => {
   return (
     <div>
       <div className="mt-6 mx-4 flex items-center justify-between font-default">
-        {dataLength === true ? <div className="uppercase text-[0.8rem] flex items-center font-medium text-[#535665]">
+        <div className="uppercase text-[0.8rem] flex items-center font-medium text-[#535665]">
           <span className="mr-2">
             <img src={pure_veg} alt="pure_veg"/>
             </span> Pure veg
@@ -37,8 +36,7 @@ const Toggle = ({ toggle, handleToggle }) => {
               </span>
             </span>
           </button>
-          {/* <button className="" onClick={handleItemFilter}>click</button> */}
-        </div>}
+        </div>
       </div>
       <div className="h-[0.5px] my-6 mx-auto w-[calc(100% - 32px)] border-b-[0.5px] border-[#d3d3d3]" />
     </div>
