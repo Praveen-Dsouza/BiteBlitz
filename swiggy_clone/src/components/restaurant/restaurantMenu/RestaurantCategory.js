@@ -26,7 +26,7 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
   );
 
   const [filterVeg, setFilterVeg] = useState(nonVegData);
-
+    console.log('filter veg cat', filterVeg)
   useEffect(() => {
     if (toggleVeg === true) {
       setFilterVeg(vegData);

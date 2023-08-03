@@ -108,7 +108,7 @@ const RestaurantMenu = () => {
           {/* Coupon ends */}
 
           {/* Veg/Non-Veg option toggle */}
-          <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} />
+          <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} resInfo={resInfo} />
           {/* Veg/Non-Veg option toggle Ends */}
 
           {/* Menu */}
