@@ -17,32 +17,33 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg, resInfo 
     dispatch(addItem(item));
   }
 
-  const nonVegData = data.itemCards.filter(
-    (veg) => veg.card.info.itemAttribute.vegClassifier === "NONVEG"
+  console.log(data.itemCards);
+
+  const nonVegData = data?.itemCards?.filter(
+    (veg) => veg?.card?.info?.itemAttribute?.vegClassifier === "NONVEG"
   );
 
-  const vegData = data.itemCards.filter(
-    (veg) => veg.card.info.itemAttribute.vegClassifier === "VEG"
+  const vegData = data?.itemCards?.filter(
+    (veg) => veg?.card?.info?.itemAttribute?.vegClassifier === "VEG"
   );
+
+  const isPureVeg = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card?.isPureVeg
 
   const [filterVeg, setFilterVeg] = useState(nonVegData);
     console.log('filter veg cat', filterVeg)
+    console.log(isPureVeg)
   useEffect(() => {
-    if (toggleVeg === true) {
+    if (toggleVeg === true ) {
       setFilterVeg(vegData);
-    } else if (toggleVeg === false) {
+    } else if (toggleVeg === false && isPureVeg === undefined) {
       setFilterVeg(nonVegData);
-    }
-    if (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card?.isPureVeg
-      === true) {
-      setFilterVeg(vegData)
-    }
+    } 
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toggleVeg]);
+  }, [toggleVeg, isPureVeg]);
 
   return (
-    filterVeg?.length > 0 && (
+    (
       <div>
         {/* Header */}
         <div className="relative">
@@ -53,7 +54,7 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg, resInfo 
             >
               <h3 className="text-[#3e4152] font-extrabold text-[1.1rem] inline-block leading-[1.2px] ">
                 <span className="font-inherit w-8/12">
-                  {data?.title} ({filterVeg?.length})
+                  {data?.title} ({filterVeg?.length > 0? filterVeg.length: data?.itemCards?.length})
                 </span>
               </h3>
               <span className="w-[19px] h-[19px]">
@@ -61,7 +62,7 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg, resInfo 
               </span>
             </div>
             {/* Accordian Body */}
-            <div>{showItems && <ItemList items={filterVeg} toggleVeg={toggleVeg} handleAddItem={handleAddItem} btnText={"ADD"} />}</div>
+            <div>{showItems && <ItemList items={filterVeg.length > 0? filterVeg: data?.itemCards} toggleVeg={toggleVeg} handleAddItem={handleAddItem} btnText={"ADD"} />}</div>
           </div>
         </div>
       </div>
