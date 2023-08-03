@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../../utils/storeSlices/cart";
 
-const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
+const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg, resInfo }) => {
   const handleClick = () => {
     setShowItems(!showItems);
   };
@@ -32,6 +32,10 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
       setFilterVeg(vegData);
     } else if (toggleVeg === false) {
       setFilterVeg(nonVegData);
+    }
+    if (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card?.isPureVeg
+      === true) {
+      setFilterVeg(vegData)
     }
   
   // eslint-disable-next-line react-hooks/exhaustive-deps

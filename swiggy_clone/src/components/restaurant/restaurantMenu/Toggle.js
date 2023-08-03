@@ -6,7 +6,7 @@ const Toggle = ({ toggle, handleToggle, resInfo }) => {
   return (
     <div>
       <div className="mt-6 mx-4 flex items-center justify-between font-default">
-        {true ? <div className="uppercase text-[0.8rem] flex items-center font-medium text-[#535665]">
+        {isPureVeg === true ? <div className="uppercase text-[0.8rem] flex items-center font-medium text-[#535665]">
           <span className="mr-2">
             <img src={pure_veg} alt="pure_veg"/>
             </span> Pure veg
