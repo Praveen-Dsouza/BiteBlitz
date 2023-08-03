@@ -17,7 +17,6 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg }) => {
     dispatch(addItem(item));
   }
 
-
   const nonVegData = data.itemCards.filter(
     (veg) => veg.card.info.itemAttribute.vegClassifier === "NONVEG"
   );
