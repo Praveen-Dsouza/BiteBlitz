@@ -1,7 +1,10 @@
 import CarouselItem from "./CarouselItem";
 import { useState, useEffect } from "react";
 
-const RestaurantCarousel = ({ title, carousel, toggleVeg }) => {
+const RestaurantCarousel = ({ resInfo, toggleVeg }) => {
+  const { title, carousel } =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
   const nonVegData = carousel?.filter(
     (item) => item?.dish?.info?.itemAttribute?.vegClassifier === "NONVEG"
   );

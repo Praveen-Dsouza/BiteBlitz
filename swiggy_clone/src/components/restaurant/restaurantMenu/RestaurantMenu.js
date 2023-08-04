@@ -34,9 +34,6 @@ const RestaurantMenu = () => {
     expectationNotifiers,
   } = resInfo?.cards[0]?.card?.card?.info;
 
-  const { title, carousel } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (cat) =>
@@ -75,7 +72,7 @@ const RestaurantMenu = () => {
           {/* Veg/Non-Veg option toggle Ends */}
 
           {/* Menu */}
-          <RestaurantCarousel carousel={carousel} title={title} toggleVeg={toggleVeg} />
+          <RestaurantCarousel resInfo={resInfo} toggleVeg={toggleVeg} />
           {/* Menu Ends */}
 
           {/* Accordian */}
