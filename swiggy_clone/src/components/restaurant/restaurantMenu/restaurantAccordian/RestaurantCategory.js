@@ -32,22 +32,23 @@ const RestaurantCategory = ({
   );
 
   const isPureVeg =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
-      ?.isPureVeg;
+  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
+    ?.isPureVeg;
 
-  const [filterVeg, setFilterVeg] = useState(nonVegData);
+  console.log('isPureVeg', isPureVeg);
+
+  const [filterVeg, setFilterVeg] = useState(data?.itemCards);
 
   useEffect(() => {
     if (toggleVeg === true) {
       setFilterVeg(vegData);
-    } else if (toggleVeg === false && isPureVeg === undefined) {
+    } else if (toggleVeg === false) {
       setFilterVeg(nonVegData);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toggleVeg, isPureVeg]);
+  }, [toggleVeg]);
 
-  return (
+  return filterVeg?.length > 0 &&(
     <div>
       {/* Header */}
       <div className="relative">
@@ -59,9 +60,7 @@ const RestaurantCategory = ({
             <h3 className="text-[#3e4152] font-extrabold text-[1.1rem] inline-block leading-[1.2px] ">
               <span className="font-inherit w-8/12">
                 {data?.title} (
-                {filterVeg?.length > 0
-                  ? filterVeg.length
-                  : data?.itemCards?.length}
+                {filterVeg?.length}
                 )
               </span>
             </h3>
@@ -73,7 +72,7 @@ const RestaurantCategory = ({
           <div>
             {showItems && (
               <ItemList
-                items={filterVeg.length > 0 ? filterVeg : data?.itemCards}
+                items={filterVeg}
                 toggleVeg={toggleVeg}
                 handleAddItem={handleAddItem}
                 btnText={"ADD"}
