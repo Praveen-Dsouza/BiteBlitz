@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import ItemList from "./restaurant/restaurantMenu/ItemList";
+import ItemList from "./restaurant/restaurantMenu/restaurantAccordian/ItemList";
 import { clearCart, removeItem } from "../utils/storeSlices/cart";
 
 const Checkout = () => {

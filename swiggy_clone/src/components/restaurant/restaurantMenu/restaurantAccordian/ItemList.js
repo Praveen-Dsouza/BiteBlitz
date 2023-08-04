@@ -1,9 +1,8 @@
-import { CDN_URL } from "../../../utils/constants";
-import veg from "../../../utils/images/veg.png";
-import non_veg from "../../../utils/images/non_veg.png";
+import { CDN_URL } from "../../../../utils/constants";
+import veg from "../../../../utils/images/veg.png";
+import non_veg from "../../../../utils/images/non_veg.png";
 
 const ItemList = ({ items, toggleVeg, handleAddItem, btnText }) => {
-
   return (
     <div>
       {items.map((item) => (
@@ -45,7 +44,10 @@ const ItemList = ({ items, toggleVeg, handleAddItem, btnText }) => {
               </div>
               <div className="absolute left-[50%] bottom-2 z-1 transform -translate-x-[50%]">
                 <div className="w-[96px] h-[36px] relative min-h-[36px] bottom-2 left-[50%]  transform -translate-x-[50%] rounded-[4px] leading-[32px] shadow-md border-[1px] border-[#d4d5d9] text-[#60b246] text-[0.9rem] font-semibold bg-white">
-                  <div className="font-default text-[#60b246] w-full h-full cursor-pointer text-center" onClick={() => handleAddItem(item)}>
+                  <div
+                    className="font-default text-[#60b246] w-full h-full cursor-pointer text-center"
+                    onClick={() => handleAddItem(item)}
+                  >
                     {btnText}
                   </div>
                   {item?.card?.info?.addons && (
