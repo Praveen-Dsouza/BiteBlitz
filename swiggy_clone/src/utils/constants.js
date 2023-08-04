@@ -38,3 +38,5 @@ export const RAINY_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_loss
 export const OFFER_ICON_URL= "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/"
 
 export const FSSAI_LOGO = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i"
+
+export const LOGIN_CHECKOUT_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r"
