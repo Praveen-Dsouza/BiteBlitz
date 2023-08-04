@@ -3,17 +3,18 @@ import rupee from "../../../utils/images/rupee.png";
 import star from "../../../utils/images/star.png";
 import { RAINY_URL } from "../../../utils/constants";
 
-const RestaurantDetail = ({
-  name,
-  cuisines,
-  areaName,
-  distance,
-  avgRating,
-  maxDeliveryTime,
-  costForTwoMessage,
-  notifier,
-  totalRatingsString,
-}) => {
+const RestaurantDetail = ({ resInfo }) => {
+  const {
+    name,
+    cuisines,
+    costForTwoMessage,
+    sla,
+    avgRating,
+    areaName,
+    totalRatingsString,
+    expectationNotifiers,
+  } = resInfo?.cards[0]?.card?.card?.info;
+
   return (
     <div className="px-4">
       <div className="pt-4 mb-[18px] ">
@@ -30,7 +31,7 @@ const RestaurantDetail = ({
             <p className="text-[0.93rem] text-[#7e808c]">{areaName}</p>
             &nbsp;
             <p className="text-[0.93rem] text-[#7e808c]">
-              {distance} km
+              {sla?.lastMileTravel} km
             </p>
             <div className="block">
               <button
@@ -54,7 +55,7 @@ const RestaurantDetail = ({
           </span>
         </div>
       </div>
-      {notifier && (
+      {expectationNotifiers[0]?.text && (
         <ul>
           <li className="mb-[18px] text-[#7e808c] flex items-start">
             <img
@@ -62,7 +63,7 @@ const RestaurantDetail = ({
               src={RAINY_URL}
               alt="raing_img"
             />
-            <span className="flex-grow-1">{notifier}</span>
+            <span className="flex-grow-1">{expectationNotifiers[0]?.text}</span>
           </li>
         </ul>
       )}
@@ -75,7 +76,7 @@ const RestaurantDetail = ({
               src={time}
               alt="time_img"
             />
-            <span className="my-1">{maxDeliveryTime} MINS</span>
+            <span className="my-1">{sla?.maxDeliveryTime} MINS</span>
           </li>
           <li className="flex text-[#3e4152] text-[15px] font-bold">
             <img

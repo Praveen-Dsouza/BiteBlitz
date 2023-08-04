@@ -22,18 +22,6 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
 
-  const {
-    name,
-    cuisines,
-    costForTwoMessage,
-    city,
-    sla,
-    avgRating,
-    areaName,
-    totalRatingsString,
-    expectationNotifiers,
-  } = resInfo?.cards[0]?.card?.card?.info;
-
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (cat) =>
@@ -49,23 +37,14 @@ const RestaurantMenu = () => {
       <div className="m-0 p-0">
         {/* Home, Add, Shop */}
         <div className="max-w-[800px] min-h-[800px] mx-auto mt-[20px] mb-0">
-          <HeaderMenu name={name} deliveryTime={sla?.deliveryTime} city={city} resId={resId}/>
+          <HeaderMenu resInfo={resInfo} resId={resId}/>
 
           {/* Resturant Name Address */}
-          <RestaurantDetail
-            name={name}
-            cuisines={cuisines}
-            areaName={areaName}
-            avgRating={avgRating}
-            maxDeliveryTime={sla?.maxDeliveryTime}
-            notifier={expectationNotifiers[0]?.text}
-            distance={sla?.lastMileTravel}
-            costForTwoMessage={costForTwoMessage}
-            totalRatingsString={totalRatingsString}
-          />
-          {/* Coupon = Card 1 */}
+          <RestaurantDetail resInfo={resInfo} />
+
+          {/* Restaurant Offer */}
           <RestaurantOffer resInfo={resInfo}/>
-          {/* Coupon ends */}
+          {/* Restaurant Offer Ends */}
 
           {/* Veg/Non-Veg option toggle */}
           <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} resInfo={resInfo} />

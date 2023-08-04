@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { SEARCH_URL } from "../../../utils/constants";
 
-const HeaderMenu = ({ name, deliveryTime, city, resId }) => {
+const HeaderMenu = ({ resInfo, resId }) => {
+  const { name, city, sla } = resInfo?.cards[0]?.card?.card?.info;
+
     return (
        <>
        <div className="max-w-[700px] min-w-[700px] ml-0 z-[7] h-[30px] text-[9px] items-center relative mx-auto my-0 font-default">
@@ -33,7 +35,7 @@ const HeaderMenu = ({ name, deliveryTime, city, resId }) => {
                 {name}
               </div>
               <div className="overflow-ellipsis whitespace-nowrap text-[0.78rem] text-[#7e808c] lowercase mt-[2px]">
-                {deliveryTime} MINS
+                {sla?.deliveryTime} MINS
               </div>
             </div>
             <div className="h-full">
