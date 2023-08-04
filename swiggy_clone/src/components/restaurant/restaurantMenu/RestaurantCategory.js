@@ -30,8 +30,7 @@ const RestaurantCategory = ({ data, showItems, setShowItems, toggleVeg, resInfo 
   const isPureVeg = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card?.isPureVeg
 
   const [filterVeg, setFilterVeg] = useState(nonVegData);
-    console.log('filter veg cat', filterVeg)
-    console.log(isPureVeg)
+  
   useEffect(() => {
     if (toggleVeg === true ) {
       setFilterVeg(vegData);
