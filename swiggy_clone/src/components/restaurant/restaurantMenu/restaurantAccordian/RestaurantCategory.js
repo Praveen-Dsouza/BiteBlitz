@@ -23,6 +23,7 @@ const RestaurantCategory = ({
     dispatch(addItem(item));
   };
 
+
   const nonVegData = data?.itemCards?.filter(
     (veg) => veg?.card?.info?.itemAttribute?.vegClassifier === "NONVEG"
   );
@@ -31,13 +32,7 @@ const RestaurantCategory = ({
     (veg) => veg?.card?.info?.itemAttribute?.vegClassifier === "VEG"
   );
 
-  const isPureVeg =
-  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
-    ?.isPureVeg;
-
-  console.log('isPureVeg', isPureVeg);
-
-  const [filterVeg, setFilterVeg] = useState(data?.itemCards);
+  const [filterVeg, setFilterVeg] = useState(nonVegData);
 
   useEffect(() => {
     if (toggleVeg === true) {

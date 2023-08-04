@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Shimmer from "../../Shimmer";
 import useRestaurantMenu from "../../../utils/hooks/useRestaurantMenu";
 import RestaurantDetail from "./RestaurantDetail";
@@ -15,11 +15,22 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
   const [toggleVeg, setToggleVeg] = useState(false);
 
+  const isPureVeg =
+  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
+    ?.isPureVeg;
+
+  console.log('isPureVeg', isPureVeg);
+
+  useEffect(() => {
+    if (isPureVeg === true) {
+      setToggleVeg(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPureVeg])
+
   const handleItemFilter = () => {
     setToggleVeg(!toggleVeg);
   };
-
-  if (resInfo === null) return <Shimmer />;
 
   return resInfo === null ? (
     <Shimmer />
