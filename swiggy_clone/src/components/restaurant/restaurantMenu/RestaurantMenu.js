@@ -44,19 +44,6 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  const license =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-      (license) =>
-        license?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
-    );
-
-  const resAddress =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-      (add) =>
-        add?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
-    );
 
   return resInfo === null ? (
     <Shimmer />
@@ -107,16 +94,12 @@ const RestaurantMenu = () => {
               />
             ))}
           </div>
-
           {/* Accordian Ends */}
+
           {/* Restuarnt License */}
-          <RestaurantLicense
-            license={license[0]?.card?.card?.text}
-            resName={resAddress[0]?.card?.card?.name}
-            area={resAddress[0]?.card?.card?.area}
-            address={resAddress[0]?.card?.card?.completeAddress}
-          />
+          <RestaurantLicense resInfo={resInfo} />
           {/* License ends */}
+
         </div>
       </div>
     </div>
