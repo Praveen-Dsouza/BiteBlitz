@@ -37,8 +37,6 @@ const RestaurantMenu = () => {
   const { title, carousel } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
-  console.log(carousel);
-
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (cat) =>
@@ -90,11 +88,7 @@ const RestaurantMenu = () => {
           {/* Veg/Non-Veg option toggle Ends */}
 
           {/* Menu */}
-          <RestaurantCarousel
-            carousel={carousel}
-            title={title}
-            toggleVeg={toggleVeg}
-          />
+          <RestaurantCarousel carousel={carousel} title={title} toggleVeg={toggleVeg} />
           {/* Menu Ends */}
 
           {/* Accordian */}

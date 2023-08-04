@@ -30,7 +30,7 @@ const RestaurantDetail = ({
             <p className="text-[0.93rem] text-[#7e808c]">{areaName}</p>
             &nbsp;
             <p className="text-[0.93rem] text-[#7e808c]">
-              {distance}
+              {distance} km
             </p>
             <div className="block">
               <button
