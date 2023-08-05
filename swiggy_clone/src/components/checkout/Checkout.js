@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import ItemList from "./restaurant/restaurantMenu/restaurantAccordian/ItemList";
-import { clearCart, removeItem } from "../utils/storeSlices/cart";
-import { LOGIN_CHECKOUT_URL } from "../utils/constants";
-import account from "../utils/images/account.png";
-import checkout_location from "../utils/images/checkout_location.png";
-import payment from "../utils/images/payment.png";
-import info from "../utils/images/info.png";
+import ItemList from "../restaurant/restaurantMenu/restaurantAccordian/ItemList";
+import { clearCart, removeItem } from "../../utils/storeSlices/cart";
+import { LOGIN_CHECKOUT_URL } from "../../utils/constants";
+import account from "../../utils/images/account.png";
+import checkout_location from "../../utils/images/checkout_location.png";
+import payment from "../../utils/images/payment.png";
+import info from "../../utils/images/info.png";
+import OrderCancellationNotice from "./OrderCancellationNotice";
 
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -241,7 +242,7 @@ const Checkout = () => {
                       <div className="mt-[10px] text-[13px] text-[#686b78] flex items-center">
                         <div className="flex-1">
                           <div className="flex">
-                          GST and Restaurant Charges
+                            GST and Restaurant Charges
                             <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
                               <span>
                                 <img
@@ -266,6 +267,8 @@ const Checkout = () => {
               <div className="uppercase">To pay</div>
               <div className="flex-1 text-right">442</div>
             </div>
+
+            <OrderCancellationNotice />
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/restaurant/restaurantList/Home";
 import Support from "./components/Support";
 import Offers from "./components/Offers";
-import Checkout from "./components/Checkout";
 import PageNotFound from "./components/PageNotFound";
 import RestaurantMenu from "./components/restaurant/restaurantMenu/RestaurantMenu";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -11,6 +10,7 @@ import Glitch from "./components/Glitch";
 import SearchRestaurantMenu from "./components/restaurant/restaurantMenu/SearchRestaurantMenu";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Checkout from "./components/checkout/Checkout";
 
 const appRouter = createBrowserRouter([
   {
