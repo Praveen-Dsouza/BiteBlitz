@@ -19,8 +19,6 @@ const RestaurantMenu = () => {
   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
     ?.isPureVeg;
 
-  console.log('isPureVeg', isPureVeg);
-
   useEffect(() => {
     if (isPureVeg === true) {
       setToggleVeg(true)
