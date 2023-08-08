@@ -33,14 +33,16 @@ export const BANNER_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_los
 export const RATING_URL =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr51LTOl1FrHsHH-dynl-B7kaj-l4wkl_LEA&usqp=CAU";
 
-export const RAINY_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_18,h_18/v1648208532/surgecreatives/rain"
+export const RAINY_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_18,h_18/v1648208532/surgecreatives/rain";
 
-export const OFFER_ICON_URL= "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/"
+export const OFFER_ICON_URL= "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/";
 
-export const FSSAI_LOGO = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i"
+export const FSSAI_LOGO = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i";
 
-export const LOGIN_CHECKOUT_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r"
+export const LOGIN_CHECKOUT_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r";
 
-export const CANCEL_NOTICE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/CancellationPolicyAssets/CancellationsReviewOrderCollapsed.png"
+export const CANCEL_NOTICE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/CancellationPolicyAssets/CancellationsReviewOrderCollapsed.png";
 
-export const EMPTY_CART_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
+export const EMPTY_CART_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0";
+
+export const EMPTY_CART_ITEMS_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_480/Cart_empty_-_menu_2x_ejjkf2";
