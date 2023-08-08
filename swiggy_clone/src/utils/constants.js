@@ -42,3 +42,5 @@ export const FSSAI_LOGO = "https://res.cloudinary.com/swiggy/image/upload/fl_los
 export const LOGIN_CHECKOUT_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r"
 
 export const CANCEL_NOTICE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/CancellationPolicyAssets/CancellationsReviewOrderCollapsed.png"
+
+export const EMPTY_CART_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"

@@ -9,6 +9,7 @@ import non_veg from "../../utils/images/non_veg.png";
 import veg from "../../utils/images/veg.png";
 import OrderCancellationNotice from "./OrderCancellationNotice";
 import { useParams } from "react-router-dom";
+import EmptyCart from "../EmptyCart";
 
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -23,6 +24,10 @@ const Checkout = () => {
   };
 
   return (
+    <div>
+      {
+        cartItems.length === 0 && <EmptyCart/>
+      }
     <div className="min-h-full bg-[#e9ecee] flex-grow-1">
       <div className="min-w-[1200px] max-w-[1200px] relative mx-auto my-0 flex mt-[31px] mb-[150px]">
         <div className="flex-1 mr-[30px] relative">
@@ -281,6 +286,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
 
     // <div className="text-center m-4 p-4">

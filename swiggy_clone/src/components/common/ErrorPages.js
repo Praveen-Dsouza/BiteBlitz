@@ -18,7 +18,7 @@ const ErrorPages = ({ imagesUrl, errText, errDescription, btnText }) => {
           {errDescription} 
         </div>
         <Link to="/">
-          <button className="cursor-pointer text-center bg-[#fc8019] mt-[25px] text-[15px] text-white px-5 h-10 font-semibold leading-10 w-auto inline-block ">
+          <button className="cursor-pointer text-center bg-[#fc8019] mt-[25px] text-[15px] uppercase text-white px-5 h-10 font-semibold leading-10 w-auto inline-block ">
             {btnText}
           </button>
         </Link>
