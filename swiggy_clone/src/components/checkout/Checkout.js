@@ -11,12 +11,13 @@ import info from "../../utils/images/info.png";
 import non_veg from "../../utils/images/non_veg.png";
 import veg from "../../utils/images/veg.png";
 import OrderCancellationNotice from "./OrderCancellationNotice";
-import { useParams } from "react-router-dom";
 import EmptyCart from "../EmptyCart";
 
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  console.log("cartItems", cartItems);
+  const restaurantInfo = useSelector((item) => item.resInfo.resInfo)
+  const { resName, resAdd, resId } = restaurantInfo;
+  console.log("cartItems", cartItems, restaurantInfo);
   const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -130,9 +131,9 @@ const Checkout = () => {
                 </span>
                 <span className="ml-[14px] flex-1 relative overflow-hidden min-h-[50px]">
                   <div className="text-[17px] text-[#282c3f] font-medium text-ellipsis overflow-hidden whitespace-nowrap">
-                    {"MCD"}
+                    {resName}
                   </div>
-                  <div className="text-[13px] text-[#686b78]">Andheri</div>
+                  <div className="text-[13px] text-[#686b78]">{resAdd}</div>
                 </span>
               </button>
               <div className="max-h-[calc(100vh-270px)] flex">

@@ -9,8 +9,12 @@ import HeaderMenu from "./HeaderMenu";
 import { useParams } from "react-router-dom";
 import RestaurantOffer from "./restaurantOffer/RestaurantOffer";
 import RestaurantAccordian from "./restaurantAccordian/RestaurantAccordian";
+import { useDispatch } from "react-redux";
+import { addResInfo } from "../../../utils/storeSlices/restaurantInfo";
 
 const RestaurantMenu = () => {
+  const dispatch= useDispatch();
+  dispatch(addResInfo(useParams()))
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const [toggleVeg, setToggleVeg] = useState(false);

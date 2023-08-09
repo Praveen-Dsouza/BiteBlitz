@@ -27,7 +27,7 @@ const Home = () => {
             ?.map((restaurant) => (
               <Link
                 key={restaurant?.info?.id}
-                to={`/restaurants/${restaurant?.info?.id}`}
+                to={`/restaurants/${restaurant?.info?.name}/${restaurant?.info?.areaName}/${restaurant?.info?.id}`}
               >
                 {restaurant?.info?.promoted ? (
                   <RestaurantCardDicounted resData={restaurant?.info} />

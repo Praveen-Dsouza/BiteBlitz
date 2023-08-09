@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex justify-between bg-[#fff] font-default shadow-md px-5 h-20 font-medium text-[#3d4152] text-base fixed z-[1] w-full">
+      <div className="flex justify-between bg-[#fff] font-default shadow-md px-5 h-20 font-medium text-[#3d4152] text-base z-[1] w-full">
         <div className="col-6/12">
           <Link to="/">
             <img
