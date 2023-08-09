@@ -16,7 +16,7 @@ import EmptyCart from "../EmptyCart";
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const restaurantInfo = useSelector((item) => item.resInfo.resInfo)
-  const { resName, resAdd, resId } = restaurantInfo;
+  const { resName, resAdd, resId } = restaurantInfo[0];
   console.log("cartItems", cartItems, restaurantInfo);
   const dispatch = useDispatch();
   const handleClearCart = () => {
