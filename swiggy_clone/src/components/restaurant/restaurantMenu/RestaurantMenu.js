@@ -13,22 +13,24 @@ import { useDispatch } from "react-redux";
 import { addResInfo } from "../../../utils/storeSlices/restaurantInfo";
 
 const RestaurantMenu = () => {
-  const dispatch= useDispatch();
-  dispatch(addResInfo(useParams()))
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const resCheckoutInfo = resInfo?.cards[0]?.card?.card?.info;
+  console.log("resInfo", resCheckoutInfo);
+  const dispatch = useDispatch();
+  dispatch(addResInfo(resCheckoutInfo));
   const [toggleVeg, setToggleVeg] = useState(false);
 
   const isPureVeg =
-  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
-    ?.isPureVeg;
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card
+      ?.isPureVeg;
 
   useEffect(() => {
     if (isPureVeg === true) {
-      setToggleVeg(true)
+      setToggleVeg(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPureVeg])
+  }, [isPureVeg]);
 
   const handleItemFilter = () => {
     setToggleVeg(!toggleVeg);
@@ -51,7 +53,11 @@ const RestaurantMenu = () => {
           {/* Restaurant Offer Ends */}
 
           {/* Veg/Non-Veg option toggle */}
-          <Toggle handleToggle={handleItemFilter} toggle={toggleVeg} resInfo={resInfo} />
+          <Toggle
+            handleToggle={handleItemFilter}
+            toggle={toggleVeg}
+            resInfo={resInfo}
+          />
           {/* Veg/Non-Veg option toggle Ends */}
 
           {/* Menu */}
@@ -59,7 +65,7 @@ const RestaurantMenu = () => {
           {/* Menu Ends */}
 
           {/* Accordian */}
-          <RestaurantAccordian resInfo={resInfo} toggleVeg={toggleVeg}/>
+          <RestaurantAccordian resInfo={resInfo} toggleVeg={toggleVeg} />
           {/* Accordian Ends */}
 
           {/* Restuarnt License */}

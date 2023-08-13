@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, removeItem } from "../../utils/storeSlices/cart";
 import {
+  CDN_URL,
   EMPTY_CART_ITEMS_URL,
   LOGIN_CHECKOUT_URL,
 } from "../../utils/constants";
@@ -15,9 +16,10 @@ import EmptyCart from "../EmptyCart";
 
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  const restaurantInfo = useSelector((item) => item.resInfo.resInfo)
-  const { resName, resAdd, resId } = restaurantInfo[0];
-  console.log("cartItems", cartItems, restaurantInfo);
+  const restaurantInfo = useSelector((item) => item?.resInfo?.resInfo)
+  const filterResInfo = restaurantInfo?.filter((item) => item !== undefined);
+  const { name, areaName, cloudinaryImageId } = filterResInfo[0] || [];
+  console.log('checkout  price', cartItems);
   const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -127,13 +129,13 @@ const Checkout = () => {
             {cartItems.length > 0 && <div className="relative flex flex-col overflow-hidden h-full">
               <button className="cursor-pointer px-[30px] py-5 flex bg-white text-left outline-none">
                 <span className="w-[50px] h-[50px] relative">
-                  <img className="w-[50px] h-[50px]" src="" alt="item_img" />
+                  <img className="w-[50px] h-[50px]" src={CDN_URL + cloudinaryImageId} alt="item_img" />
                 </span>
                 <span className="ml-[14px] flex-1 relative overflow-hidden min-h-[50px]">
                   <div className="text-[17px] text-[#282c3f] font-medium text-ellipsis overflow-hidden whitespace-nowrap">
-                    {resName}
+                    {name}
                   </div>
-                  <div className="text-[13px] text-[#686b78]">{resAdd}</div>
+                  <div className="text-[13px] text-[#686b78]">{areaName}</div>
                 </span>
               </button>
               <div className="max-h-[calc(100vh-270px)] flex">
@@ -143,7 +145,7 @@ const Checkout = () => {
                       {/* Items */}
                       {cartItems.map((item) => {
                         return (
-                          <div className="-mx-4 py-0 px-4 relative">
+                          <div key={item?.card?.info?.id} className="-mx-4 py-0 px-4 relative">
                             <div className="relative py-[10px] flex items-center">
                               <div className="flex-grow-1 items-start ">
                                 <img
@@ -235,7 +237,7 @@ const Checkout = () => {
                           <div className="text-right self-start">
                             <span className="text-right text-[13px] text-[#686b78]">
                               <span className="text-right text-[13px] text-[#686b78]">
-                                ₹245
+                                ₹100
                               </span>
                             </span>
                           </div>
