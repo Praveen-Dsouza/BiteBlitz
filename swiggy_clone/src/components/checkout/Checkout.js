@@ -13,13 +13,29 @@ import non_veg from "../../utils/images/non_veg.png";
 import veg from "../../utils/images/veg.png";
 import OrderCancellationNotice from "./OrderCancellationNotice";
 import EmptyCart from "../EmptyCart";
+import { useEffect, useState } from "react";
 
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  const [cartPrice, setCartPrice] = useState(0);
   const restaurantInfo = useSelector((item) => item?.resInfo?.resInfo)
   const filterResInfo = restaurantInfo?.filter((item) => item !== undefined);
   const { name, areaName, cloudinaryImageId } = filterResInfo[0] || [];
   console.log('checkout  price', cartItems);
+
+  useEffect(() => {
+    calcItemtotal();
+  }, [cartItems])
+
+  const calcItemtotal = () => {
+    let price = 0
+    cartItems?.map((p) => {
+      price += p?.card?.info?.price
+      setCartPrice(price)
+    })
+    return price
+  }
+  
   const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -180,7 +196,7 @@ const Checkout = () => {
                                   {/* price */}
                                   <div className="text-[13px] text-[#535665] text-right w-[60px]">
                                     <span className="font-default">
-                                      ₹{item.card.info.price / 100}
+                                      ₹{item?.card?.info?.price / 100}
                                     </span>
                                   </div>
                                 </div>
@@ -237,7 +253,7 @@ const Checkout = () => {
                           <div className="text-right self-start">
                             <span className="text-right text-[13px] text-[#686b78]">
                               <span className="text-right text-[13px] text-[#686b78]">
-                                ₹100
+                                ₹{cartPrice / 100}
                               </span>
                             </span>
                           </div>
@@ -307,7 +323,7 @@ const Checkout = () => {
               </div>
               <div className="w-full bg-white h-[60px] min-h-[60px] flex items-center font-semibold text-[#282c3f] px-[30px] z-[1]">
                 <div className="uppercase">To pay</div>
-                <div className="flex-1 text-right">442</div>
+                <div className="flex-1 text-right">₹{cartPrice / 100 + 31 + 2 + 19.50}</div>
               </div>
 
               <OrderCancellationNotice />
