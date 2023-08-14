@@ -1,5 +1,5 @@
-import ErrorPages from "./common/ErrorPages";
-import { EMPTY_CART_URL } from "../utils/constants";
+import ErrorPages from "../common/ErrorPages";
+import { EMPTY_CART_URL } from "../../utils/constants";
 
 const EmptyCart = () => {
   const errText = "Your cart is empty";

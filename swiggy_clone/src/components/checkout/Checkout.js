@@ -1,41 +1,37 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, removeItem } from "../../utils/storeSlices/cart";
-import {
-  CDN_URL,
-  EMPTY_CART_ITEMS_URL,
-  LOGIN_CHECKOUT_URL,
-} from "../../utils/constants";
+import { CDN_URL, LOGIN_CHECKOUT_URL } from "../../utils/constants";
 import account from "../../utils/images/account.png";
 import checkout_location from "../../utils/images/checkout_location.png";
 import payment from "../../utils/images/payment.png";
 import info from "../../utils/images/info.png";
-import non_veg from "../../utils/images/non_veg.png";
-import veg from "../../utils/images/veg.png";
 import OrderCancellationNotice from "./OrderCancellationNotice";
-import EmptyCart from "../EmptyCart";
+import EmptyCart from "./EmptyCart";
 import { useEffect, useState } from "react";
+import EmptyCartItems from "./EmptyCartItems";
+import CartItems from "./CartItems";
 
 const Checkout = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const [cartPrice, setCartPrice] = useState(0);
-  const restaurantInfo = useSelector((item) => item?.resInfo?.resInfo)
+  const restaurantInfo = useSelector((item) => item?.resInfo?.resInfo);
   const filterResInfo = restaurantInfo?.filter((item) => item !== undefined);
   const { name, areaName, cloudinaryImageId } = filterResInfo[0] || [];
-  console.log('checkout  price', cartItems);
+  console.log("checkout  price", cartItems);
 
   useEffect(() => {
     calcItemtotal();
-  }, [cartItems])
+  }, [cartItems]);
 
   const calcItemtotal = () => {
-    let price = 0
+    let price = 0;
     cartItems?.map((p) => {
-      price += p?.card?.info?.price
-      setCartPrice(price)
-    })
-    return price
-  }
-  
+      price += p?.card?.info?.price;
+      setCartPrice(price);
+    });
+    return price;
+  };
+
   const dispatch = useDispatch();
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -124,210 +120,156 @@ const Checkout = () => {
             </div>
           </div>
           <div className="w-[366px]">
-            {cartItems.length === 0 && (
-              <div className="h-full">
-                <div className="px-[30px] w-[366px] overflow-x-hidden overflow-y-auto bg-transparent relative">
-                  <div className="text-[#7e808c] text-[32px] tracking-[-0.3px] font-semibold">
-                    Cart Empty
-                  </div>
-                  <img
-                    className="mt-[47px] opacity-[0.5] w-full h-[212px]"
-                    src={EMPTY_CART_ITEMS_URL}
-                    alt=""
-                  />
-                  <div className="text-[#93959f] mt-[15px] text-base font-light font-default max-w-[218px]">
-                    Good food is always cooking! Go ahead, order some yummy
-                    items from the menu.
-                  </div>
-                </div>
-              </div>
-            )}
-            {cartItems.length > 0 && <div className="relative flex flex-col overflow-hidden h-full">
-              <button className="cursor-pointer px-[30px] py-5 flex bg-white text-left outline-none">
-                <span className="w-[50px] h-[50px] relative">
-                  <img className="w-[50px] h-[50px]" src={CDN_URL + cloudinaryImageId} alt="item_img" />
-                </span>
-                <span className="ml-[14px] flex-1 relative overflow-hidden min-h-[50px]">
-                  <div className="text-[17px] text-[#282c3f] font-medium text-ellipsis overflow-hidden whitespace-nowrap">
-                    {name}
-                  </div>
-                  <div className="text-[13px] text-[#686b78]">{areaName}</div>
-                </span>
-              </button>
-              <div className="max-h-[calc(100vh-270px)] flex">
-                <div className="flex relative overflow-y-hidden">
-                  <div className="flex flex-grow-1 relative flex-col overflow-y-auto overflow-x-hidden px-[30px] w-[366px] bg-white pb-0 outline-none">
-                    <div className=" font-default">
-                      {/* Items */}
-                      {cartItems.map((item) => {
-                        return (
-                          <div key={item?.card?.info?.id} className="-mx-4 py-0 px-4 relative">
-                            <div className="relative py-[10px] flex items-center">
-                              <div className="flex-grow-1 items-start ">
+            {cartItems.length === 0 && <EmptyCartItems />}
+            {cartItems.length > 0 && (
+              <div className="relative flex flex-col overflow-hidden h-full">
+                <button className="cursor-pointer px-[30px] py-5 flex bg-white text-left outline-none">
+                  <span className="w-[50px] h-[50px] relative">
+                    <img
+                      className="w-[50px] h-[50px]"
+                      src={CDN_URL + cloudinaryImageId}
+                      alt="item_img"
+                    />
+                  </span>
+                  <span className="ml-[14px] flex-1 relative overflow-hidden min-h-[50px]">
+                    <div className="text-[17px] text-[#282c3f] font-medium text-ellipsis overflow-hidden whitespace-nowrap">
+                      {name}
+                    </div>
+                    <div className="text-[13px] text-[#686b78]">{areaName}</div>
+                  </span>
+                </button>
+                <div className="max-h-[calc(100vh-270px)] flex">
+                  <div className="flex relative overflow-y-hidden">
+                    <div className="flex flex-grow-1 relative flex-col overflow-y-auto overflow-x-hidden px-[30px] w-[366px] bg-white pb-0 outline-none">
+                      <div className=" font-default">
+                        {/* Items */}
+                          <CartItems cartItemsList={cartItems}/>
+                        {/* Items End */}
+                        {/*  */}
+                        <div className="h-[51px] relative text-[#686b78] text-[13px]">
+                          <textarea className="border-0 outline-0 w-full h-full py-4 pl-10 text-[#3d4152] font-normal text-sm bg-[#f9f9f9] overflow-auto m-0" />
+                          <div className="absolute text-[13px] top-[17px] left-[40px] w-full text-[#93959f]">
+                            Any suggestions? We will pass it on...
+                          </div>
+                          <img
+                            className="absolute top-5 left-5 w-[15px] h-[10px] text-[#282c3f]"
+                            src=""
+                            alt=""
+                          />
+                        </div>
+                        <div className="items-center mt-[15px] bg-white py-[5px] px-[15px] flex relative overflow-hidden border-[1px] border-[#a9abb2] cursor-pointer">
+                          <div className="flex items-start ">
+                            <div className="mt-1 mr-[15px]">
+                              <label className="relative cursor-pointer inline-block w-4 h-4 border-[1px] border-[#7e808c] bg-transparent rounded-sm transition duration-300 hover:border-blue-500">
+                                <input className="absolute left-[-9999px] opacity-0 box-border" />
                                 <img
-                                  className="text-[#0f8a65] text-sm top-1 relative leading-[1px] w-4 h-4"
-                                  src={
-                                    item?.card?.info?.itemAttribute
-                                      ?.vegClassifier === "NONVEG"
-                                      ? non_veg
-                                      : veg
-                                  }
+                                  src=""
+                                  className="overflow-hidden absolute left-[-3px] top-[-3px] opacity-1 fill-[#60b246]"
                                   alt=""
                                 />
-                                <div className="flex-grow-1 text-sm font-normal ml-[10px] mr-[14px]">
-                                  {item?.card?.info?.name}
-                                </div>
+                              </label>
+                            </div>
+                            <div>
+                              <div className="font-medium text-[#3e4152]">
+                                Opt in for No-contact Delivery
                               </div>
-                              <div className="w-[120px]">
-                                <div className="float-right flex items-center">
-                                  {/* button */}
-                                  <div className="h-[30px] border-[1px] border-[#d4d5d9] text-[#60b246] font-semibold leading-[30px] relative items-center bg-white w-[70px] text-xs block">
-                                    {/* <div className="w-full h-full cursor-pointer text-[60b246]">ADD</div> */}
-                                    <div className="absolute top-0 right-0 w-[33.33%] inline-block cursor-pointer transform translate-z-0 text-[150%] font-semibold">
-                                      +
-                                    </div>
-                                    <div className="absolute left-0 right-0 w-[33.33%] opacity-1 inline-block cursor-pointer transform translate-z-0 text-[1.5rem] font-semibold">
-                                      -
-                                    </div>
-                                    <div className="absolute top-0 left-[33.33%] w-[33.33%] opacity-1 inline-block cursor-pointer transform translate-z-0">
-                                      1
-                                    </div>
-                                  </div>
-                                  {/* price */}
-                                  <div className="text-[13px] text-[#535665] text-right w-[60px]">
-                                    <span className="font-default">
-                                      ₹{item?.card?.info?.price / 100}
-                                    </span>
-                                  </div>
-                                </div>
+                              <div className="opacity-[0.6] text-[#282c3f]">
+                                Unwell, or avoiding contact? Please select
+                                no-contact delivery. Partner will safely place
+                                the order outside your door (not for COD)
                               </div>
                             </div>
                           </div>
-                        );
-                      })}
-                      {/* Items End */}
-                      {/*  */}
-                      <div className="h-[51px] relative text-[#686b78] text-[13px]">
-                        <textarea className="border-0 outline-0 w-full h-full py-4 pl-10 text-[#3d4152] font-normal text-sm bg-[#f9f9f9] overflow-auto m-0" />
-                        <div className="absolute text-[13px] top-[17px] left-[40px] w-full text-[#93959f]">
-                          Any suggestions? We will pass it on...
                         </div>
-                        <img
-                          className="absolute top-5 left-5 w-[15px] h-[10px] text-[#282c3f]"
-                          src=""
-                          alt=""
-                        />
-                      </div>
-                      <div className="items-center mt-[15px] bg-white py-[5px] px-[15px] flex relative overflow-hidden border-[1px] border-[#a9abb2] cursor-pointer">
-                        <div className="flex items-start ">
-                          <div className="mt-1 mr-[15px]">
-                            <label className="relative cursor-pointer inline-block w-4 h-4 border-[1px] border-[#7e808c] bg-transparent rounded-sm transition duration-300 hover:border-blue-500">
-                              <input className="absolute left-[-9999px] opacity-0 box-border" />
-                              <img
-                                src=""
-                                className="overflow-hidden absolute left-[-3px] top-[-3px] opacity-1 fill-[#60b246]"
-                                alt=""
-                              />
-                            </label>
+                        <div className="mt-[17px] pb-[21px] border-b-[2px] border-b-[#282c3f]">
+                          <div className="font-medium text-[13px] mb-[10px] text-[#282c3f]">
+                            Bill Details
                           </div>
-                          <div>
-                            <div className="font-medium text-[#3e4152]">
-                              Opt in for No-contact Delivery
+                          <div className="text-[13px] text-[#686b78] flex items-center">
+                            <div className="flex-1">
+                              <span>Item Total</span>
                             </div>
-                            <div className="opacity-[0.6] text-[#282c3f]">
-                              Unwell, or avoiding contact? Please select
-                              no-contact delivery. Partner will safely place the
-                              order outside your door (not for COD)
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-[17px] pb-[21px] border-b-[2px] border-b-[#282c3f]">
-                        <div className="font-medium text-[13px] mb-[10px] text-[#282c3f]">
-                          Bill Details
-                        </div>
-                        <div className="text-[13px] text-[#686b78] flex items-center">
-                          <div className="flex-1">
-                            <span>Item Total</span>
-                          </div>
-                          <div className="text-right self-start">
-                            <span className="text-right text-[13px] text-[#686b78]">
+                            <div className="text-right self-start">
                               <span className="text-right text-[13px] text-[#686b78]">
-                                ₹{cartPrice / 100}
+                                <span className="text-right text-[13px] text-[#686b78]">
+                                  ₹{cartPrice / 100}
+                                </span>
                               </span>
-                            </span>
-                          </div>
-                        </div>
-                        <div className="mt-[10px] text-[13px] text-[#686b78] flex items-center">
-                          <div className="flex-1">
-                            <div className="flex">
-                              Delivery Fee | 1.4 kms
-                              <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
-                                <span>
-                                  <img
-                                    className="w-4 h-4"
-                                    src={info}
-                                    alt="info_img"
-                                  />
-                                </span>
-                              </div>
                             </div>
                           </div>
-                          <div className="text-right self-start">
-                            <span className="text-right">₹31</span>
-                          </div>
-                        </div>
-                        <div className="border-b-[1px] border-b-[#e9e9e9] mt-[17px] mb-[15px] mx-0 block"></div>
-                        <div className="font-[13px] text-[#686b78] flex items-center">
-                          <div className="flex-1">
-                            <div className="flex">
-                              Platform fee
-                              <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
-                                <span>
-                                  <img
-                                    className="w-4 h-4"
-                                    src={info}
-                                    alt="info_img"
-                                  />
-                                </span>
+                          <div className="mt-[10px] text-[13px] text-[#686b78] flex items-center">
+                            <div className="flex-1">
+                              <div className="flex">
+                                Delivery Fee | 1.4 kms
+                                <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
+                                  <span>
+                                    <img
+                                      className="w-4 h-4"
+                                      src={info}
+                                      alt="info_img"
+                                    />
+                                  </span>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="text-right self-start">
-                            <span className="text-right">₹2</span>
-                          </div>
-                        </div>
-                        <div className="mt-[10px] text-[13px] text-[#686b78] flex items-center">
-                          <div className="flex-1">
-                            <div className="flex">
-                              GST and Restaurant Charges
-                              <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
-                                <span>
-                                  <img
-                                    className="w-4 h-4"
-                                    src={info}
-                                    alt="info_img"
-                                  />
-                                </span>
-                              </div>
+                            <div className="text-right self-start">
+                              <span className="text-right">₹31</span>
                             </div>
                           </div>
-                          <div className="text-right self-start">
-                            <span className="text-right">₹19.50</span>
+                          <div className="border-b-[1px] border-b-[#e9e9e9] mt-[17px] mb-[15px] mx-0 block"></div>
+                          <div className="font-[13px] text-[#686b78] flex items-center">
+                            <div className="flex-1">
+                              <div className="flex">
+                                Platform fee
+                                <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
+                                  <span>
+                                    <img
+                                      className="w-4 h-4"
+                                      src={info}
+                                      alt="info_img"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="text-right self-start">
+                              <span className="text-right">₹2</span>
+                            </div>
+                          </div>
+                          <div className="mt-[10px] text-[13px] text-[#686b78] flex items-center">
+                            <div className="flex-1">
+                              <div className="flex">
+                                GST and Restaurant Charges
+                                <div className="text-[#686b78] font-normal ml-[7px] text-xs relative top-[1px] inline cursor-pointer">
+                                  <span>
+                                    <img
+                                      className="w-4 h-4"
+                                      src={info}
+                                      alt="info_img"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="text-right self-start">
+                              <span className="text-right">₹19.50</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="w-full bg-white h-[60px] min-h-[60px] flex items-center font-semibold text-[#282c3f] px-[30px] z-[1]">
-                <div className="uppercase">To pay</div>
-                <div className="flex-1 text-right">₹{cartPrice / 100 + 31 + 2 + 19.50}</div>
-              </div>
+                <div className="w-full bg-white h-[60px] min-h-[60px] flex items-center font-semibold text-[#282c3f] px-[30px] z-[1]">
+                  <div className="uppercase">To pay</div>
+                  <div className="flex-1 text-right">
+                    ₹{cartPrice / 100 + 31 + 2 + 19.5}
+                  </div>
+                </div>
 
-              <OrderCancellationNotice />
-            </div>}
+                <OrderCancellationNotice />
+              </div>
+            )}
           </div>
         </div>
       </div>
