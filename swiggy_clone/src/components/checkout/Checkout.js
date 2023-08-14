@@ -21,6 +21,7 @@ const Checkout = () => {
 
   useEffect(() => {
     calcItemtotal();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItems]);
 
   const calcItemtotal = () => {
@@ -28,8 +29,8 @@ const Checkout = () => {
     cartItems?.map((p) => {
       price += p?.card?.info?.price;
       setCartPrice(price);
+      return price;
     });
-    return price;
   };
 
   const dispatch = useDispatch();

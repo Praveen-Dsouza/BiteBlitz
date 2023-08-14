@@ -19,9 +19,9 @@ const CartItems = ({ cartItemsList }) => {
             />
             <div className="flex-grow-1 text-sm font-normal ml-[10px] mr-[14px]">
               {item?.card?.info?.name}
-              <button className="text-[11px] text-[#686b78] font-medium mt-[2px] relative block p-0">
+              {item?.card?.info?.addons && <button className="text-[11px] text-[#686b78] font-medium mt-[2px] relative block p-0">
                 Customize <img className="absolute text-[17px] left-[54px] top-[-5px] w-3 h-3 my-2" src={customize_cart_item} alt=""/>
-              </button>
+              </button>}
             </div>
           </div>
           <div className="w-[120px]">
