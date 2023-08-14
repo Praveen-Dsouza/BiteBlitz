@@ -5,9 +5,9 @@ import customize_cart_item from "../../utils/images/customize_cart_item.png";
 const CartItems = ({ cartItemsList }) => {
   return cartItemsList.map((item) => {
     return (
-      <div key={item?.card?.info?.id} className="-mx-4 py-0 px-4 relative">
+      <div key={item?.card?.info?.id} className="-mx-4 py-0 px-4 relative antialiased">
         <div className="relative py-[10px] flex items-center">
-          <div className="flex flex-grow-1 items-start ">
+          <div className="flex flex-grow-1 items-start w-full">
             <img
               className="text-[#0f8a65] text-sm top-1 relative leading-[1px] w-4 h-4"
               src={
